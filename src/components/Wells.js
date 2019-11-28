@@ -22,8 +22,6 @@ export default function MaterialTableDemo() {
                             setState(prevState => {
                                 const data = [...prevState.data];
                                 data.push(newData);
-                                console.log(API.getData());
-                                console.log(API.getData());
                                 return { ...prevState, data };
                             });
                         }, 600);
@@ -33,7 +31,7 @@ export default function MaterialTableDemo() {
                         setTimeout(() => {
                             resolve();
                             if (oldData) {
-                                console.log(newData)
+                                API.updateWells(newData);
                                 setState(prevState => {
                                     const data = [...prevState.data];
                                     data[data.indexOf(oldData)] = newData;

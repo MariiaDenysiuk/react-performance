@@ -2,14 +2,35 @@ import parse from 'date-fns/parse'
 import addDays from 'date-fns/addDays'
 import format from 'date-fns/format'
 import compareAsc from 'date-fns/compareAsc'
-
+import API from "../api/API";
 
 //This function is incomplete. It doesn't calculate frac dates
 
 export default function run(stateRigs) {
+   let rigs = [];
+   stateRigs.forEach(item => {
+       item.tanks.forEach(tank => {
+           API.getData().body.forEach(well => {
+               if(well.drill_tank === tank.name) {
+                   rigs.push(
+                       {
+                           "rig": item.name,
+                           "drill_tank": tank.name,
+                           "well_name": well.well_name,
+                           "bench": well.bench,
+                           "project": well.project,
+                           "splitted_drill_tank": ""
+                       },
+                   );
+               }
+           });
 
-    let rigs = [];
-   console.log(stateRigs);
+       })
+   });
+
+   API.postDrillData(rigs).then(
+       res => { console.log(res) }
+   );
     // stateRigs.forEach(e => {
     //
     //     // rigs.push({ ...e });

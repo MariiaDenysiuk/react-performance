@@ -4,6 +4,8 @@ import './Drilling.css';
 import run from './run.js';
 import API from "../api/API";
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 export default class Drilling extends Component {
     constructor(props) {
@@ -60,11 +62,10 @@ export default class Drilling extends Component {
                     {this.state.rigs.filter(e => e.rigID != 'hold').map((rig, i) =>
                         <Rig rig={rig} />
                     )}
-                    <Button
-                        className='addRigBtn'
-                        onClick={this.addRigClick}
-                    > +
-                    </Button>
+                    <Fab size="small" color="secondary" aria-label="add" className='addRigBtn'
+                         onClick={this.addRigClick}>
+                        <AddIcon />
+                    </Fab>
                     <Button onClick={() => run(this.state.rigs)} variant="contained">Run</Button>
                 </div>
                 <Droppable droppableId='hold'>
@@ -113,7 +114,6 @@ function Rig(props) {
 
 
 function Tank(props) {
-
     let texts = [];
     for (let i in props.tank.benches) {
         texts.push(i + ' ' + props.tank.benches[i])

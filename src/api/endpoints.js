@@ -1,6 +1,4 @@
-const baseUrl = process.env.IS_BROWSER
-    ? `${process.env.HOST}:${process.env.PORT}/api/v2/`
-    : 'http://localhost:3000/api/v2/';
+const baseUrl = process.env.NODE_ENV === 'development' ? false : 'http://exampleUrl';
 
 /**
  * Object responsible for wells endpoints.
