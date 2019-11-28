@@ -16,7 +16,6 @@ class API {
         if(!options.root) return WellAdapter.getData(wells);
     }
 
-
     updateWells() {
         axios.post(`${options.root}/wells_update`)
             .then(res => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import './Drilling.css';
+import '../styles/Drilling.css';
 import run from './run.js';
 import API from "../api/API";
 import Button from '@material-ui/core/Button';
@@ -87,7 +87,6 @@ export default class Drilling extends Component {
 }
 
 function Rig(props) {
-    console.log(props);
     return (
         <div className='rigDiv' >
             <div className='rigName'>
