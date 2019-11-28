@@ -1,0 +1,938 @@
+[
+	{
+		"Date": "04-30-15",
+		"Cum Drilled": "2",
+		"Hz Wells Frac'd": "1",
+		"Hz Wells Producing": "1",
+		"Drilled-Producing": "1",
+		"Total Vert Fracs/Mnth": "21"
+	},
+	{
+		"Date": "05-31-15",
+		"Cum Drilled": "3",
+		"Hz Wells Frac'd": "0.99999999999999978",
+		"Hz Wells Producing": "0",
+		"Drilled-Producing": "3",
+		"Total Vert Fracs/Mnth": "7"
+	},
+	{
+		"Date": "06-30-15",
+		"Cum Drilled": "3",
+		"Hz Wells Frac'd": "1.9999999999999996",
+		"Hz Wells Producing": "0.99999999999999978",
+		"Drilled-Producing": "2",
+		"Total Vert Fracs/Mnth": "12"
+	},
+	{
+		"Date": "07-31-15",
+		"Cum Drilled": "3",
+		"Hz Wells Frac'd": "2.9999999999999996",
+		"Hz Wells Producing": "1.9999999999999996",
+		"Drilled-Producing": "1.0000000000000004",
+		"Total Vert Fracs/Mnth": "12"
+	},
+	{
+		"Date": "08-31-15",
+		"Cum Drilled": "4",
+		"Hz Wells Frac'd": "2.9999999999999996",
+		"Hz Wells Producing": "2.9999999999999996",
+		"Drilled-Producing": "1.0000000000000004",
+		"Total Vert Fracs/Mnth": "7"
+	},
+	{
+		"Date": "09-30-15",
+		"Cum Drilled": "5",
+		"Hz Wells Frac'd": "4",
+		"Hz Wells Producing": "2.9999999999999996",
+		"Drilled-Producing": "2.0000000000000004",
+		"Total Vert Fracs/Mnth": "13"
+	},
+	{
+		"Date": "10-31-15",
+		"Cum Drilled": "5",
+		"Hz Wells Frac'd": "4.9999999999999991",
+		"Hz Wells Producing": "3.9999999999999991",
+		"Drilled-Producing": "1.0000000000000009",
+		"Total Vert Fracs/Mnth": "9"
+	},
+	{
+		"Date": "11-30-15",
+		"Cum Drilled": "6",
+		"Hz Wells Frac'd": "6",
+		"Hz Wells Producing": "4.9999999999999991",
+		"Drilled-Producing": "1.0000000000000009",
+		"Total Vert Fracs/Mnth": "9"
+	},
+	{
+		"Date": "12-31-15",
+		"Cum Drilled": "7",
+		"Hz Wells Frac'd": "6",
+		"Hz Wells Producing": "6",
+		"Drilled-Producing": "1",
+		"Total Vert Fracs/Mnth": "1"
+	},
+	{
+		"Date": "01-31-16",
+		"Cum Drilled": "8",
+		"Hz Wells Frac'd": "7",
+		"Hz Wells Producing": "5.0000000000000018",
+		"Drilled-Producing": "2.9999999999999982",
+		"Total Vert Fracs/Mnth": "5"
+	},
+	{
+		"Date": "02-29-16",
+		"Cum Drilled": "9",
+		"Hz Wells Frac'd": "7",
+		"Hz Wells Producing": "6.9999999999999982",
+		"Drilled-Producing": "2.0000000000000018",
+		"Total Vert Fracs/Mnth": "5"
+	},
+	{
+		"Date": "03-31-16",
+		"Cum Drilled": "10",
+		"Hz Wells Frac'd": "9",
+		"Hz Wells Producing": "7.0000000000000036",
+		"Drilled-Producing": "2.9999999999999964",
+		"Total Vert Fracs/Mnth": "6"
+	},
+	{
+		"Date": "04-30-16",
+		"Cum Drilled": "12",
+		"Hz Wells Frac'd": "9.0000000000000018",
+		"Hz Wells Producing": "9.0000000000000018",
+		"Drilled-Producing": "2.9999999999999982",
+		"Total Vert Fracs/Mnth": "6"
+	},
+	{
+		"Date": "05-31-16",
+		"Cum Drilled": "15",
+		"Hz Wells Frac'd": "9",
+		"Hz Wells Producing": "9",
+		"Drilled-Producing": "6",
+		"Total Vert Fracs/Mnth": "2"
+	},
+	{
+		"Date": "06-30-16",
+		"Cum Drilled": "17",
+		"Hz Wells Frac'd": "9",
+		"Hz Wells Producing": "9.0000000000000071",
+		"Drilled-Producing": "7.9999999999999929",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "07-31-16",
+		"Cum Drilled": "20",
+		"Hz Wells Frac'd": "10",
+		"Hz Wells Producing": "9.0000000000000071",
+		"Drilled-Producing": "10.999999999999993",
+		"Total Vert Fracs/Mnth": "1"
+	},
+	{
+		"Date": "08-31-16",
+		"Cum Drilled": "23",
+		"Hz Wells Frac'd": "10",
+		"Hz Wells Producing": "10.000000000000004",
+		"Drilled-Producing": "12.999999999999996",
+		"Total Vert Fracs/Mnth": "7"
+	},
+	{
+		"Date": "09-30-16",
+		"Cum Drilled": "25",
+		"Hz Wells Frac'd": "13",
+		"Hz Wells Producing": "10",
+		"Drilled-Producing": "15",
+		"Total Vert Fracs/Mnth": "1"
+	},
+	{
+		"Date": "10-31-16",
+		"Cum Drilled": "28",
+		"Hz Wells Frac'd": "13.999999999999998",
+		"Hz Wells Producing": "12.999999999999993",
+		"Drilled-Producing": "15.000000000000007",
+		"Total Vert Fracs/Mnth": "1"
+	},
+	{
+		"Date": "11-30-16",
+		"Cum Drilled": "31",
+		"Hz Wells Frac'd": "14.999999999999998",
+		"Hz Wells Producing": "11.999999999999996",
+		"Drilled-Producing": "19.000000000000004",
+		"Total Vert Fracs/Mnth": "2"
+	},
+	{
+		"Date": "12-31-16",
+		"Cum Drilled": "33",
+		"Hz Wells Frac'd": "14.999999999999996",
+		"Hz Wells Producing": "15",
+		"Drilled-Producing": "18",
+		"Total Vert Fracs/Mnth": "6"
+	},
+	{
+		"Date": "01-31-17",
+		"Cum Drilled": "36",
+		"Hz Wells Frac'd": "17.999999999999996",
+		"Hz Wells Producing": "12.000000000000004",
+		"Drilled-Producing": "23.999999999999996",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "02-28-17",
+		"Cum Drilled": "38",
+		"Hz Wells Frac'd": "19.999999999999996",
+		"Hz Wells Producing": "17.999999999999993",
+		"Drilled-Producing": "20.000000000000007",
+		"Total Vert Fracs/Mnth": "2"
+	},
+	{
+		"Date": "03-31-17",
+		"Cum Drilled": "40",
+		"Hz Wells Frac'd": "24",
+		"Hz Wells Producing": "18.000000000000011",
+		"Drilled-Producing": "21.999999999999989",
+		"Total Vert Fracs/Mnth": "2"
+	},
+	{
+		"Date": "04-30-17",
+		"Cum Drilled": "42",
+		"Hz Wells Frac'd": "25.999999999999996",
+		"Hz Wells Producing": "22.000000000000011",
+		"Drilled-Producing": "19.999999999999989",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "05-31-17",
+		"Cum Drilled": "46",
+		"Hz Wells Frac'd": "27.999999999999996",
+		"Hz Wells Producing": "26.000000000000014",
+		"Drilled-Producing": "19.999999999999986",
+		"Total Vert Fracs/Mnth": "12"
+	},
+	{
+		"Date": "06-30-17",
+		"Cum Drilled": "50",
+		"Hz Wells Frac'd": "30.999999999999996",
+		"Hz Wells Producing": "27.000000000000014",
+		"Drilled-Producing": "22.999999999999986",
+		"Total Vert Fracs/Mnth": "1"
+	},
+	{
+		"Date": "07-31-17",
+		"Cum Drilled": "54",
+		"Hz Wells Frac'd": "35",
+		"Hz Wells Producing": "27.000000000000014",
+		"Drilled-Producing": "26.999999999999986",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "08-31-17",
+		"Cum Drilled": "58",
+		"Hz Wells Frac'd": "39",
+		"Hz Wells Producing": "29.000000000000021",
+		"Drilled-Producing": "28.999999999999979",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "09-30-17",
+		"Cum Drilled": "63",
+		"Hz Wells Frac'd": "43.999999999999993",
+		"Hz Wells Producing": "30.000000000000043",
+		"Drilled-Producing": "32.999999999999957",
+		"Total Vert Fracs/Mnth": "4"
+	},
+	{
+		"Date": "10-31-17",
+		"Cum Drilled": "65",
+		"Hz Wells Frac'd": "50.999999999999986",
+		"Hz Wells Producing": "34.000000000000028",
+		"Drilled-Producing": "30.999999999999972",
+		"Total Vert Fracs/Mnth": "4"
+	},
+	{
+		"Date": "11-30-17",
+		"Cum Drilled": "70",
+		"Hz Wells Frac'd": "54.999999999999993",
+		"Hz Wells Producing": "46",
+		"Drilled-Producing": "24",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "12-31-17",
+		"Cum Drilled": "76",
+		"Hz Wells Frac'd": "58.999999999999993",
+		"Hz Wells Producing": "41.999999999999993",
+		"Drilled-Producing": "34.000000000000007",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "01-31-18",
+		"Cum Drilled": "79",
+		"Hz Wells Frac'd": "63.999999999999993",
+		"Hz Wells Producing": "41.999999999999993",
+		"Drilled-Producing": "37.000000000000007",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "02-28-18",
+		"Cum Drilled": "84",
+		"Hz Wells Frac'd": "67.999999999999986",
+		"Hz Wells Producing": "64.000000000000014",
+		"Drilled-Producing": "19.999999999999986",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "03-31-18",
+		"Cum Drilled": "88",
+		"Hz Wells Frac'd": "71",
+		"Hz Wells Producing": "64.000000000000028",
+		"Drilled-Producing": "23.999999999999972",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "04-30-18",
+		"Cum Drilled": "96",
+		"Hz Wells Frac'd": "79",
+		"Hz Wells Producing": "67",
+		"Drilled-Producing": "29",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "05-31-18",
+		"Cum Drilled": "100",
+		"Hz Wells Frac'd": "85.999999999999986",
+		"Hz Wells Producing": "77",
+		"Drilled-Producing": "23",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "06-30-18",
+		"Cum Drilled": "105",
+		"Hz Wells Frac'd": "90.999999999999972",
+		"Hz Wells Producing": "84",
+		"Drilled-Producing": "21",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "07-31-18",
+		"Cum Drilled": "111",
+		"Hz Wells Frac'd": "93.999999999999972",
+		"Hz Wells Producing": "91",
+		"Drilled-Producing": "20",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "08-31-18",
+		"Cum Drilled": "118",
+		"Hz Wells Frac'd": "101.99999999999997",
+		"Hz Wells Producing": "89.999999999999972",
+		"Drilled-Producing": "28.000000000000028",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "09-30-18",
+		"Cum Drilled": "125",
+		"Hz Wells Frac'd": "105.99999999999997",
+		"Hz Wells Producing": "101.99999999999997",
+		"Drilled-Producing": "23.000000000000028",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "10-31-18",
+		"Cum Drilled": "132",
+		"Hz Wells Frac'd": "107.99999999999994",
+		"Hz Wells Producing": "105.99999999999994",
+		"Drilled-Producing": "26.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "11-30-18",
+		"Cum Drilled": "140",
+		"Hz Wells Frac'd": "112.99999999999994",
+		"Hz Wells Producing": "107.99999999999997",
+		"Drilled-Producing": "32.000000000000028",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "12-31-18",
+		"Cum Drilled": "147",
+		"Hz Wells Frac'd": "120.99999999999994",
+		"Hz Wells Producing": "112.99999999999994",
+		"Drilled-Producing": "34.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "01-31-19",
+		"Cum Drilled": "155",
+		"Hz Wells Frac'd": "125.99999999999991",
+		"Hz Wells Producing": "114.99999999999991",
+		"Drilled-Producing": "40.000000000000085",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "02-28-19",
+		"Cum Drilled": "165",
+		"Hz Wells Frac'd": "133",
+		"Hz Wells Producing": "122.99999999999993",
+		"Drilled-Producing": "42.000000000000071",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "03-31-19",
+		"Cum Drilled": "175",
+		"Hz Wells Frac'd": "138.00000000000003",
+		"Hz Wells Producing": "127.99999999999996",
+		"Drilled-Producing": "47.000000000000043",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "04-30-19",
+		"Cum Drilled": "182",
+		"Hz Wells Frac'd": "142.99999999999997",
+		"Hz Wells Producing": "138.00000000000003",
+		"Drilled-Producing": "43.999999999999972",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "05-31-19",
+		"Cum Drilled": "192",
+		"Hz Wells Frac'd": "147",
+		"Hz Wells Producing": "138.00000000000003",
+		"Drilled-Producing": "53.999999999999972",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "06-30-19",
+		"Cum Drilled": "205",
+		"Hz Wells Frac'd": "159",
+		"Hz Wells Producing": "147",
+		"Drilled-Producing": "58",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "07-31-19",
+		"Cum Drilled": "215",
+		"Hz Wells Frac'd": "171",
+		"Hz Wells Producing": "159",
+		"Drilled-Producing": "56",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "08-31-19",
+		"Cum Drilled": "230",
+		"Hz Wells Frac'd": "188",
+		"Hz Wells Producing": "171",
+		"Drilled-Producing": "59",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "09-30-19",
+		"Cum Drilled": "242",
+		"Hz Wells Frac'd": "195",
+		"Hz Wells Producing": "179",
+		"Drilled-Producing": "63",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "10-31-19",
+		"Cum Drilled": "252",
+		"Hz Wells Frac'd": "211.99999999999997",
+		"Hz Wells Producing": "186",
+		"Drilled-Producing": "66",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "11-30-19",
+		"Cum Drilled": "263",
+		"Hz Wells Frac'd": "220",
+		"Hz Wells Producing": "196",
+		"Drilled-Producing": "67",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "12-31-19",
+		"Cum Drilled": "275",
+		"Hz Wells Frac'd": "227.99999999999997",
+		"Hz Wells Producing": "219.99999999999997",
+		"Drilled-Producing": "55.000000000000028",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "01-31-20",
+		"Cum Drilled": "284",
+		"Hz Wells Frac'd": "233.99999999999997",
+		"Hz Wells Producing": "220.99999999999997",
+		"Drilled-Producing": "63.000000000000028",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "02-29-20",
+		"Cum Drilled": "295",
+		"Hz Wells Frac'd": "242.99999999999997",
+		"Hz Wells Producing": "220.99999999999997",
+		"Drilled-Producing": "74.000000000000028",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "03-31-20",
+		"Cum Drilled": "307",
+		"Hz Wells Frac'd": "256.99999999999994",
+		"Hz Wells Producing": "227.99999999999994",
+		"Drilled-Producing": "79.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "04-30-20",
+		"Cum Drilled": "318",
+		"Hz Wells Frac'd": "270.99999999999994",
+		"Hz Wells Producing": "254",
+		"Drilled-Producing": "64",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "05-31-20",
+		"Cum Drilled": "328",
+		"Hz Wells Frac'd": "284.99999999999994",
+		"Hz Wells Producing": "270.99999999999994",
+		"Drilled-Producing": "57.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "06-30-20",
+		"Cum Drilled": "339",
+		"Hz Wells Frac'd": "296.99999999999994",
+		"Hz Wells Producing": "284.99999999999994",
+		"Drilled-Producing": "54.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "07-31-20",
+		"Cum Drilled": "350",
+		"Hz Wells Frac'd": "305.99999999999994",
+		"Hz Wells Producing": "289.99999999999994",
+		"Drilled-Producing": "60.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "08-31-20",
+		"Cum Drilled": "367",
+		"Hz Wells Frac'd": "313.99999999999994",
+		"Hz Wells Producing": "300.99999999999994",
+		"Drilled-Producing": "66.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "09-30-20",
+		"Cum Drilled": "377",
+		"Hz Wells Frac'd": "316.99999999999994",
+		"Hz Wells Producing": "299.99999999999994",
+		"Drilled-Producing": "77.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "10-31-20",
+		"Cum Drilled": "385",
+		"Hz Wells Frac'd": "331.99999999999994",
+		"Hz Wells Producing": "315.99999999999994",
+		"Drilled-Producing": "69.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "11-30-20",
+		"Cum Drilled": "398",
+		"Hz Wells Frac'd": "342.99999999999994",
+		"Hz Wells Producing": "331.99999999999994",
+		"Drilled-Producing": "66.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "12-31-20",
+		"Cum Drilled": "407",
+		"Hz Wells Frac'd": "353.99999999999994",
+		"Hz Wells Producing": "339.99999999999994",
+		"Drilled-Producing": "67.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "01-31-21",
+		"Cum Drilled": "414",
+		"Hz Wells Frac'd": "367.99999999999994",
+		"Hz Wells Producing": "348.99999999999994",
+		"Drilled-Producing": "65.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "02-28-21",
+		"Cum Drilled": "424",
+		"Hz Wells Frac'd": "372.99999999999994",
+		"Hz Wells Producing": "351.99999999999994",
+		"Drilled-Producing": "72.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "03-31-21",
+		"Cum Drilled": "433",
+		"Hz Wells Frac'd": "379",
+		"Hz Wells Producing": "357",
+		"Drilled-Producing": "76",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "04-30-21",
+		"Cum Drilled": "441",
+		"Hz Wells Frac'd": "388.99999999999989",
+		"Hz Wells Producing": "367.99999999999989",
+		"Drilled-Producing": "73.000000000000114",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "05-31-21",
+		"Cum Drilled": "452",
+		"Hz Wells Frac'd": "406",
+		"Hz Wells Producing": "367.99999999999994",
+		"Drilled-Producing": "84.000000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "06-30-21",
+		"Cum Drilled": "462",
+		"Hz Wells Frac'd": "409.99999999999989",
+		"Hz Wells Producing": "400",
+		"Drilled-Producing": "62",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "07-31-21",
+		"Cum Drilled": "474",
+		"Hz Wells Frac'd": "411.99999999999989",
+		"Hz Wells Producing": "408.99999999999989",
+		"Drilled-Producing": "65.000000000000114",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "08-31-21",
+		"Cum Drilled": "483",
+		"Hz Wells Frac'd": "420.99999999999989",
+		"Hz Wells Producing": "408.99999999999989",
+		"Drilled-Producing": "74.000000000000114",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "09-30-21",
+		"Cum Drilled": "492",
+		"Hz Wells Frac'd": "441.99999999999989",
+		"Hz Wells Producing": "406.99999999999989",
+		"Drilled-Producing": "85.000000000000114",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "10-31-21",
+		"Cum Drilled": "502",
+		"Hz Wells Frac'd": "459.99999999999983",
+		"Hz Wells Producing": "419.99999999999983",
+		"Drilled-Producing": "82.000000000000171",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "11-30-21",
+		"Cum Drilled": "510",
+		"Hz Wells Frac'd": "474.99999999999983",
+		"Hz Wells Producing": "445.99999999999983",
+		"Drilled-Producing": "64.000000000000171",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "12-31-21",
+		"Cum Drilled": "522",
+		"Hz Wells Frac'd": "487.99999999999983",
+		"Hz Wells Producing": "459.99999999999983",
+		"Drilled-Producing": "62.000000000000171",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "01-31-22",
+		"Cum Drilled": "530",
+		"Hz Wells Frac'd": "500.99999999999983",
+		"Hz Wells Producing": "463.99999999999983",
+		"Drilled-Producing": "66.000000000000171",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "02-28-22",
+		"Cum Drilled": "540",
+		"Hz Wells Frac'd": "510.99999999999983",
+		"Hz Wells Producing": "484.99999999999983",
+		"Drilled-Producing": "55.000000000000171",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "03-31-22",
+		"Cum Drilled": "550",
+		"Hz Wells Frac'd": "518.99999999999977",
+		"Hz Wells Producing": "492.99999999999983",
+		"Drilled-Producing": "57.000000000000171",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "04-30-22",
+		"Cum Drilled": "558",
+		"Hz Wells Frac'd": "529.99999999999977",
+		"Hz Wells Producing": "510.99999999999977",
+		"Drilled-Producing": "47.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "05-31-22",
+		"Cum Drilled": "569",
+		"Hz Wells Frac'd": "538.99999999999977",
+		"Hz Wells Producing": "518.99999999999977",
+		"Drilled-Producing": "50.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "06-30-22",
+		"Cum Drilled": "579",
+		"Hz Wells Frac'd": "546.99999999999966",
+		"Hz Wells Producing": "528.99999999999966",
+		"Drilled-Producing": "50.000000000000341",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "07-31-22",
+		"Cum Drilled": "591",
+		"Hz Wells Frac'd": "559.99999999999966",
+		"Hz Wells Producing": "536.99999999999977",
+		"Drilled-Producing": "54.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "08-31-22",
+		"Cum Drilled": "602",
+		"Hz Wells Frac'd": "568.99999999999966",
+		"Hz Wells Producing": "540.99999999999977",
+		"Drilled-Producing": "61.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "09-30-22",
+		"Cum Drilled": "612",
+		"Hz Wells Frac'd": "579.99999999999966",
+		"Hz Wells Producing": "547.99999999999977",
+		"Drilled-Producing": "64.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "10-31-22",
+		"Cum Drilled": "624",
+		"Hz Wells Frac'd": "590.99999999999977",
+		"Hz Wells Producing": "550.99999999999977",
+		"Drilled-Producing": "73.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "11-30-22",
+		"Cum Drilled": "635",
+		"Hz Wells Frac'd": "600.99999999999977",
+		"Hz Wells Producing": "560.99999999999977",
+		"Drilled-Producing": "74.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "12-31-22",
+		"Cum Drilled": "645",
+		"Hz Wells Frac'd": "612.99999999999977",
+		"Hz Wells Producing": "556.99999999999977",
+		"Drilled-Producing": "88.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "01-31-23",
+		"Cum Drilled": "660",
+		"Hz Wells Frac'd": "624.99999999999966",
+		"Hz Wells Producing": "559.99999999999989",
+		"Drilled-Producing": "100.00000000000011",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "02-28-23",
+		"Cum Drilled": "670",
+		"Hz Wells Frac'd": "632.99999999999966",
+		"Hz Wells Producing": "601.99999999999966",
+		"Drilled-Producing": "68.000000000000341",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "03-31-23",
+		"Cum Drilled": "683",
+		"Hz Wells Frac'd": "648.99999999999966",
+		"Hz Wells Producing": "573.99999999999977",
+		"Drilled-Producing": "109.00000000000023",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "04-30-23",
+		"Cum Drilled": "695",
+		"Hz Wells Frac'd": "658.99999999999966",
+		"Hz Wells Producing": "599.99999999999977",
+		"Drilled-Producing": "95.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "05-31-23",
+		"Cum Drilled": "706",
+		"Hz Wells Frac'd": "672.99999999999977",
+		"Hz Wells Producing": "572.99999999999989",
+		"Drilled-Producing": "133.00000000000011",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "06-30-23",
+		"Cum Drilled": "720",
+		"Hz Wells Frac'd": "683.99999999999966",
+		"Hz Wells Producing": "613.99999999999977",
+		"Drilled-Producing": "106.00000000000023",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "07-31-23",
+		"Cum Drilled": "734",
+		"Hz Wells Frac'd": "694.99999999999977",
+		"Hz Wells Producing": "638.99999999999977",
+		"Drilled-Producing": "95.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "08-31-23",
+		"Cum Drilled": "749",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "99.000000000000227",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "09-30-23",
+		"Cum Drilled": "763",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "108.00000000000023",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "10-31-23",
+		"Cum Drilled": "775",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "120.00000000000023",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "11-30-23",
+		"Cum Drilled": "790",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "122.00000000000034",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "12-31-23",
+		"Cum Drilled": "804",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "130.00000000000045",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "01-31-24",
+		"Cum Drilled": "818",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "138.00000000000034",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "02-29-24",
+		"Cum Drilled": "836",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "151.00000000000034",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "03-31-24",
+		"Cum Drilled": "850",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "189.00000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "04-30-24",
+		"Cum Drilled": "865",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "190.00000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "05-31-24",
+		"Cum Drilled": "880",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "196.00000000000045",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "06-30-24",
+		"Cum Drilled": "894",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "195.00000000000034",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "07-31-24",
+		"Cum Drilled": "913",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "197.00000000000034",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "08-31-24",
+		"Cum Drilled": "930",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "190.00000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "09-30-24",
+		"Cum Drilled": "947",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "170.00000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "10-31-24",
+		"Cum Drilled": "963",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "164.00000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "11-30-24",
+		"Cum Drilled": "977",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "178.00000000000057",
+		"Total Vert Fracs/Mnth": "0"
+	},
+	{
+		"Date": "12-31-24",
+		"Cum Drilled": "",
+		"Hz Wells Frac'd": "",
+		"Hz Wells Producing": "",
+		"Drilled-Producing": "156.00000000000068",
+		"Total Vert Fracs/Mnth": "0"
+	}
+]

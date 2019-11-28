@@ -1,0 +1,53 @@
+{
+  "name": "playground",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "bootstrap": "^4.3.1",
+    "date-fns": "^2.6.0",
+    "eslint": "6.7.1",
+    "eslint-plugin-react": "7.16.0",
+    "jquery": "^3.4.1",
+    "jquery-ui": "^1.12.1",
+    "jqwidgets-scripts": "^8.3.2",
+    "jsgrid": "^1.5.3",
+    "pondjs": "^0.9.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-beautiful-dnd": "^11.0.5",
+    "react-bootstrap": "^1.0.0-beta.14",
+    "material-table": "^1.50.0",
+    "react-datasheet": "^1.4.0",
+    "react-dom": "^16.10.2",
+    "react-scripts": "^3.2.0",
+    "react-spreadsheet-grid": "^1.4.3",
+    "react-tabs": "^3.0.0",
+    "react-timeseries-charts": "^0.16.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-plugin-eslint-plugin": "^2.1.0"
+  }
+}
