@@ -3,6 +3,7 @@ import React from "react";
 class CrossHairs extends React.Component {
     render() {
         const { x, y } = this.props;
+        console.log(this.props)
         const style = { pointerEvents: "none", stroke: "#ccc" };
         if (x && y) {
             return (
