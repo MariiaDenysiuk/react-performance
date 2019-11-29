@@ -21,9 +21,25 @@ const drillings = {
     },
 };
 
+/**
+ * Object responsible for completion endpoints.
+ */
+const completion = {
+    get_calculate_drilling_schedule() {
+        return 'calculate_drilling_schedule';
+    },
+    get_calculate_production_waterout() {
+        return 'calculate_production_waterout';
+    },
+    get_calculate_financial() {
+        return 'calculate_financial';
+    },
+};
+
 const api = {
     wells,
-    drillings
+    drillings,
+    completion
 };
 
 export const options = {

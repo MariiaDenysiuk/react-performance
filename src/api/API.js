@@ -4,6 +4,8 @@ import DrillsAdapter from "./adapter/DrillsAdapter";
 import { drills } from "./testData/drills";
 import { options } from "./endpoints";
 import { wells } from "../api/testData/wells";
+import { crewsRigs } from "../api/testData/RigsCrews";
+import ChartAdapter from "./adapter/ChartAdapter";
 
 class API {
     getData() {
@@ -15,7 +17,6 @@ class API {
         });
         if(!options.root) return WellAdapter.getData(wells);
     }
-
 
     updateWells() {
         axios.post(`${options.root}/wells_update`)
@@ -36,7 +37,15 @@ class API {
         return axios.post(`${options.root}/drilling/calculate_drilling_schedule`, {runDrillData})
             .then(res => {
                console.log(res)
-            })
+            });
+    }
+
+    getRigsCrewsData() {
+        axios.post(`${options.root}/drilling/?`)
+            .then(res => {
+                return ChartAdapter.getData(res);
+            });
+        if(!options.root) return ChartAdapter.getData(crewsRigs);
     }
 }
 

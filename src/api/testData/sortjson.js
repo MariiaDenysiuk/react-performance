@@ -23,11 +23,6 @@ fs.readFile('./tanklist.json', "utf8", (e, data) => {
         }
     });
 
-    // not used but might be useful
-    // fs.writeFile("sortedByRigAndTank.json", JSON.stringify(res), 'utf8', function(err) {
-    //     if (err) return console.log(err);
-    // });
-
 
     let tankid = 0;
 
