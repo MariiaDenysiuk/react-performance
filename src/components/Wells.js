@@ -2,7 +2,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import API from "../api/API";
 
-export default function MaterialTableDemo() {
+export default function MaterialTableDemo(props) {
 
     const [state, setState] = React.useState({
         columns: API.getData().header,
