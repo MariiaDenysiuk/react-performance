@@ -46,20 +46,13 @@ class API {
     }
 
     // ----------------- completion tab -----------------------------------
-    getRigsData() {
-        axios.post(`${options.root}/drilling/rigsCrewsData?`)
-            .then(res => {
-                return ChartAdapter.getData(res);
-            });
-        if(!options.root) return ChartAdapter.getData(rigsCrews_schedule, crewsRigs.rigs);
-    }
 
     getCrewsData() {
         axios.post(`${options.root}/drilling/CrewsData?`)
             .then(res => {
                 return ChartAdapter.getData(res);
             });
-        if(!options.root) return ChartAdapter.getData(rigsCrews_schedule, crewsRigs.crews);
+        if(!options.root) return ChartAdapter.getData(rigsCrews_schedule, rigsCrews_schedule);
     }
 
     getWaterOut() {
@@ -67,7 +60,7 @@ class API {
             .then(res => {
                 return ChartAdapter.getData(res);
             });
-        if(!options.root) return ChartAdapter.getData(water_schedule, water);
+        if(!options.root) return ChartAdapter.getData(production_schedule, production_schedule);
     }
 
     getProduction() {
@@ -75,7 +68,7 @@ class API {
             .then(res => {
                 return ChartAdapter.getData(res);
             });
-        if(!options.root) return ChartAdapter.getData(production_schedule, production);
+        if(!options.root) return ChartAdapter.getData(production_schedule, production_schedule);
     }
 }
 

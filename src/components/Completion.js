@@ -1,71 +1,58 @@
 import React, { Component } from 'react';
-import { TimeSeries, TimeRange } from "pondjs";
+import { TimeSeries } from "pondjs";
 import { Charts, ChartContainer, ChartRow, YAxis, LineChart, styler } from "react-timeseries-charts";
 import 'react-datasheet/lib/react-datasheet.css';
 import API from "../api/API";
 import TableUI from "./Table";
 import Grid from '@material-ui/core/Grid';
+import _ from "underscore";
+import { format } from "d3-format";
+import Baseline from "./BaseLine";
+
 
 //-------------------charts-----------------
+function buildPoints() {
+    const rigs = API.getCrewsData().chart.rigs;
+    const crews = API.getCrewsData().chart.crews;
+    let points = [];
+    for (let i = 0; i < rigs.length; i++) {
+        points.push([rigs[i][0], rigs[i][1], crews[i][1]]);
+    }
+    return points;
+}
 
-const seriesRigs = new TimeSeries({
+const seriesRigsCrews = new TimeSeries({
     name: "CrewsRigs",
-    columns: ["time", "value"],
-    points: API.getRigsData().chart
+    columns: ["time", "rigs", "crews"],
+    points: buildPoints()
 });
-
-const seriesCrews = new TimeSeries({
-    name: "CrewsRigs",
-    columns: ["time", "value"],
-    points: API.getCrewsData().chart
-});
-
-const seriesWater = new TimeSeries({
-    name: "Water",
-    columns: ["time", "value"],
-    points: API.getWaterOut().chart
-});
-
-const seriesProduction = new TimeSeries({
-    name: "Production",
-    columns: ["time", "value"],
-    points: API.getProduction().chart
-});
-
 
 //-----------------tables----------------
-const tableRigs = API.getRigsData().table;
-
-const tableWater = API.getWaterOut().table;
-const tableProduction = API.getProduction().table;
-
+const tableRigs = API.getCrewsData().table;
 
 const style = styler([
-    { key: "ActualProd", color: "red", width: 2 },
-    { key: "fracImpact", color: "gray", width: 2 },
-    { key: "prodWOI", color: "#ffd700", width: 2 },
-    { key: "ACTUAL_PROD", color: "#b19cd9", width: 2 },
-    { key: "cumDrilled", color: "#0000ff", width: 2 },
-    { key: "hzWellsFracd", color: "orange", width: 2 },
-    { key: "hzWellsProducing", color: "#5fafff", width: 2 },
-    { key: "drilledProducing", color: "green", width: 2 },
-    { key: "totalVertFracs", color: "brown", width: 2 },
+    { key: "rigs", color: "red", width: 2 },
+    { key: "crews", color: "gray", width: 2 },
 ]);
 
 
-const styleRigs = {
-    value: {
-        stroke: "#a04c9c",
-        opacity: 0.2
-    }
-};
+class CrossHairs extends React.Component {
+    render() {
+        const { x, y } = this.props;
 
-const styleCrews = {
-    value: {
-        stroke: "#a02c2c",
-        opacity: 0.2
+        const style = { pointerEvents: "none", stroke: "#ccc" };
+        if (!_.isNull(x) && !_.isNull(y)) {
+            return (
+                <g>
+                    <line style={style} x1={0} y1={y} x2={this.props.width} y2={y} />
+                    <line style={style} x1={x} y1={0} x2={x} y2={this.props.height} />
+                </g>
+            );
+        } else {
+            return <g />;
+        }
     }
-};
+}
 
 
 const chartStyle = {
@@ -73,81 +60,134 @@ const chartStyle = {
     alignItems: "center"
 };
 
-export default class Completion extends Component{
+export default class Completion extends Component {
+
+    state = {
+        tracker: null,
+        timerange: seriesRigsCrews.range(),
+        x: null,
+        y: null
+    };
+
+    handleTrackerChanged = tracker => {
+        if (!tracker) {
+            this.setState({ tracker, x: null, y: null });
+        } else {
+            this.setState({ tracker });
+        }
+    };
+
+    handleTimeRangeChange = timerange => {
+        this.setState({ timerange });
+    };
+
+    handleMouseMove = (x, y) => {
+        this.setState({ x, y });
+    };
+
     render() {
+        const f = format("$,.2f");
+        const range = this.state.timerange;
+
+        if (this.state.tracker) {
+            const index = seriesRigsCrews.bisect(this.state.tracker);
+            const trackerEvent = seriesRigsCrews.at(index);
+        }
+
         return (
-            <div >
-                <Grid container spacing={3}>
+
+            <Grid container spacing={3}>
                     <Grid item xs={6} spacing={3}>
                         <TableUI tableData={tableRigs} />
                     </Grid>
                     <Grid item xs={6} spacing={3} style={chartStyle} >
-                        <ChartContainer timeRange={seriesRigs.range()} format="%b '%y">
-                            <ChartRow height="150">
-                                <YAxis
-                                    id="rigs"
-                                    label="RigsCrews"
-                                    min={seriesRigs.min()}
-                                    max={seriesRigs.max()}
-                                    width="60"
-                                    format=",.2f"
-                                />
-                                <Charts>
-                                    <LineChart axis="rigs" series={seriesRigs} style={styleRigs} />
-                                    <LineChart axis="rigs" series={seriesCrews} style={styleCrews} />
-                                </Charts>
-                            </ChartRow>
-                        </ChartContainer>
-                    </Grid>
-                </Grid>
+                        <div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <ChartContainer
+                                        timeRange={range}
+                                        timeAxisStyle={{
+                                            ticks: {
+                                                stroke: "#AAA",
+                                                opacity: 0.25,
+                                                "stroke-dasharray": "1,1"
+                                            },
+                                            values: {
+                                                fill: "#AAA",
+                                                "font-size": 12
+                                            }
+                                        }}
+                                        showGrid={true}
+                                        paddingRight={100}
+                                        maxTime={seriesRigsCrews.range().end()}
+                                        minTime={seriesRigsCrews.range().begin()}
+                                        timeAxisAngledLabels={true}
+                                        timeAxisHeight={65}
+                                        onTrackerChanged={this.handleTrackerChanged}
+                                        onBackgroundClick={() => this.setState({ selection: null })}
+                                        enablePanZoom={true}
+                                        onTimeRangeChanged={this.handleTimeRangeChange}
+                                        onMouseMove={(x, y) => this.handleMouseMove(x, y)}
+                                        minDuration={1000 * 60 * 60 * 24 * 30}
+                                    >
+                                        <ChartRow height="300">
+                                            <YAxis
+                                                id="y"
+                                                label="Rigs and crews"
+                                                min={0.5}
+                                                max={20.5}
+                                                style={{
+                                                    ticks: {
+                                                        stroke: "#AAA",
+                                                        opacity: 0.25,
+                                                        "stroke-dasharray": "1,1"
+                                                    }
+                                                }}
+                                                showGrid
+                                                hideAxisLine
+                                                width="60"
+                                                type="linear"
+                                                format=",.2f"
+                                            />
+                                            <Charts>
+                                                <LineChart
+                                                    axis="y"
+                                                    breakLine={false}
+                                                    series={seriesRigsCrews}
+                                                    columns={["rigs", "crews"]}
+                                                    style={style}
+                                                    interpolation="curveBasis"
+                                                    highlight={this.state.highlight}
+                                                    onHighlightChange={highlight =>
+                                                        this.setState({ highlight })
+                                                    }
+                                                    selection={this.state.selection}
+                                                    onSelectionChange={selection =>
+                                                        this.setState({ selection })
+                                                    }
+                                                />
+                                                <CrossHairs x={this.state.x} y={this.state.y} />
+                                                <Baseline
+                                                    axis="y"
+                                                    value={1.0}
+                                                    label="Baseline"
+                                                    position="right"
+                                                />
+                                            </Charts>
+                                        </ChartRow>
+                                    </ChartContainer>
 
-                <Grid container spacing={3}>
-                    <Grid item xs={6} spacing={3}>
-                        <TableUI tableData={tableWater} />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-2">
+                                    <p style={{color: 'red', margin: 0}}>--rigs</p>
+                                    <p style={{color: 'gray', margin: 0}}>--crews</p>
+                                </div>
+                            </div>
+                        </div>
                     </Grid>
-                    <Grid item xs={6} spacing={3} style={chartStyle}>
-                        <ChartContainer timeRange={seriesWater.range()} format="%b '%y">
-                            <ChartRow height="150">
-                                <YAxis
-                                    id="rigs"
-                                    label="WaterOut"
-                                    min={seriesWater.min()}
-                                    max={seriesWater.max()}
-                                    width="60"
-                                    format=",.2f"
-                                />
-                                <Charts>
-                                    <LineChart axis="rigs" series={seriesWater} />
-                                </Charts>
-                            </ChartRow>
-                        </ChartContainer>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={3} >
-                    <Grid item xs={6} spacing={3} >
-                        <TableUI tableData={tableProduction} />
-                    </Grid>
-                    <Grid item xs={6} spacing={3} style={chartStyle}>
-                        <ChartContainer timeRange={seriesProduction.range()} format="%b '%y">
-                            <ChartRow height="150">
-                                <YAxis
-                                    id="rigs"
-                                    label="Production"
-                                    min={seriesProduction.min()}
-                                    max={seriesProduction.max()}
-                                    width="60"
-                                    format=",.2f"
-                                />
-                                <Charts>
-                                    <LineChart axis="rigs" series={seriesProduction} />
-                                </Charts>
-                            </ChartRow>
-                        </ChartContainer>
-                    </Grid>
-                </Grid>
-
-            </div>
+            </Grid>
         );
 
     }
