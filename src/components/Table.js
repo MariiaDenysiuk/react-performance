@@ -20,8 +20,6 @@ const tableStyle = {
 
 
 export default function TableUI(prop) {
-    console.log(prop);
-    const classes = useStyles();
     const [state] = React.useState({
         columns: prop.tableData.data.header,
         data: prop.tableData.data.body,

@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { TimeSeries } from "pondjs";
 import { Charts, ChartContainer, ChartRow, YAxis, LineChart, styler } from "react-timeseries-charts";
 import 'react-datasheet/lib/react-datasheet.css';
-import API from "../api/API";
-import TableUI from "./Table";
+import API from "../../api/API";
+import TableUI from "../Table";
 import Grid from '@material-ui/core/Grid';
 import _ from "underscore";
 import { format } from "d3-format";
-import Baseline from "./BaseLine";
+import Baseline from "../BaseLine";
+import Resizable from "./Production";
 
 
 //-------------------charts-----------------
@@ -31,7 +32,7 @@ const seriesWaterOut = new TimeSeries({
 const tableRigs = API.getWaterOut().table;
 
 const style = styler([
-    { key: "waterOut", color: "green", width: 2 },
+    { key: "waterOut", color: "red", width: 2 },
 ]);
 
 class CrossHairs extends React.Component {
@@ -93,14 +94,11 @@ export default class WaterOut extends Component {
         }
 
         return (
-            <Grid container spacing={3}>
-                    <Grid item xs={6} spacing={3}>
-                        <TableUI tableData={table} />
-                    </Grid>
-                    <Grid item xs={6} spacing={3} style={chartStyle} >
-                        <div>
-                            <div className="row">
-                                <div className="col-md-12">
+
+                        <div style={{width: '100%'}}>
+                            <div style={{width: '100%'}}>
+                                <div style={{width: '100%'}}>
+
                                     <ChartContainer
                                         timeRange={range}
                                         timeAxisStyle={{
@@ -116,7 +114,7 @@ export default class WaterOut extends Component {
                                         }}
                                         showGrid={true}
                                         paddingRight={100}
-                                
+
                                         timeAxisAngledLabels={true}
                                         timeAxisHeight={65}
                                         onTrackerChanged={this.handleTrackerChanged}
@@ -176,14 +174,12 @@ export default class WaterOut extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-2">
-                                    <p style={{color: 'red', margin: 0}}>--rigs</p>
-                                    <p style={{color: 'gray', margin: 0}}>--crews</p>
+                                <div className="col-md-2" style={{fontSize: '14px', display: 'flex', justifyContent: 'flex-end', marginBottom: "20px"}}>
+                                    <span style={{color: 'red'}}>--water out</span>
                                 </div>
                             </div>
                         </div>
-                    </Grid>
-            </Grid>
+
         );
 
     }

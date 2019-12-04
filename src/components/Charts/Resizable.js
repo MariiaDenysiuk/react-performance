@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 export default class Resizable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { width: 0 };
+        this.state = { width: 500 };
         this.handleResize = this.handleResize.bind(this);
     }
 
@@ -38,6 +38,7 @@ export default class Resizable extends React.Component {
         return (
             <div
                 ref={c => {
+                    this.state.width = 500;
                     this.container = c;
                 }}
                 {...this.props}

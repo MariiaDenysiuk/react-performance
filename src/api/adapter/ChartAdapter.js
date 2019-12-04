@@ -64,7 +64,6 @@ class ChartAdapter  {
 
         arr.chart = {rigs: rigs, crews: crews, waterOut: waterOut, production: production};
 
-       console.log(arr);
        return arr;
     }
 }

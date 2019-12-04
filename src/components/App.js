@@ -10,6 +10,7 @@ import MaterialTableDemo from "../components/Wells";
 import Drilling from "../components/Drilling";
 import Completion from "./Completion";
 import { teal } from '@material-ui/core/colors';
+import Financial from "./Financial";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -76,6 +77,9 @@ export default function SimpleTabs() {
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                    <Completion/>
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                    <Financial/>
                 </TabPanel>
             </div>
         </ThemeProvider>
