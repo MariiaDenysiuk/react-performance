@@ -20,14 +20,16 @@ const tableStyle = {
 
 
 export default function TableUI(prop) {
+    console.log(prop);
     const classes = useStyles();
     const [state] = React.useState({
-        columns: prop.tableData.header,
-        data: prop.tableData.body,
+        columns: prop.tableData.data.header,
+        data: prop.tableData.data.body,
     });
 
     return (
         <MaterialTable
+            title={prop.tableData.tableName}
             style={tableStyle}
             columns={state.columns}
             data={state.data}

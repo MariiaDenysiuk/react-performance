@@ -75,7 +75,7 @@ export default function SimpleTabs() {
                     <Drilling/>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-
+                   <Completion/>
                 </TabPanel>
             </div>
         </ThemeProvider>

@@ -8,35 +8,31 @@ import Grid from '@material-ui/core/Grid';
 import _ from "underscore";
 import { format } from "d3-format";
 import Baseline from "./BaseLine";
-import Production from './Production';
-import WaterOut from './WaterOut';
-import Resizable from './Resizable';
+
 
 //-------------------charts-----------------
 function buildPoints() {
-    const rigs = API.getCrewsData().chart.rigs;
-    const crews = API.getCrewsData().chart.crews;
+    const waterOut = API.getWaterOut().chart.waterOut;
     let points = [];
-    for (let i = 0; i < rigs.length; i++) {
-        points.push([rigs[i][0], rigs[i][1], crews[i][1]]);
+    for (let i = 0; i < waterOut.length; i++) {
+        points.push([waterOut[i][0], waterOut[i][1]]);
     }
+    
     return points;
 }
 
-const seriesRigsCrews = new TimeSeries({
-    name: "CrewsRigs",
-    columns: ["time", "rigs", "crews"],
+const seriesWaterOut = new TimeSeries({
+    name: "Water out",
+    columns: ["time", "waterOut"],
     points: buildPoints()
 });
 
 //-----------------tables----------------
-const tableRigs = API.getCrewsData().table;
+const tableRigs = API.getWaterOut().table;
 
 const style = styler([
-    { key: "rigs", color: "red", width: 2 },
-    { key: "crews", color: "gray", width: 2 },
+    { key: "waterOut", color: "green", width: 2 },
 ]);
-
 
 class CrossHairs extends React.Component {
     render() {
@@ -56,17 +52,16 @@ class CrossHairs extends React.Component {
     }
 }
 
-
 const chartStyle = {
     display: "flex",
     alignItems: "center"
 };
 
-export default class Completion extends Component {
+export default class WaterOut extends Component {
 
     state = {
         tracker: null,
-        timerange: seriesRigsCrews.range(),
+        timerange: seriesWaterOut.range(),
         x: null,
         y: null
     };
@@ -90,24 +85,22 @@ export default class Completion extends Component {
     render() {
         const f = format("$,.2f");
         const range = this.state.timerange;
-        const table = {data: tableRigs, tableName: 'Rigs and Crews'};
+        const table = {data: tableRigs, tableName: 'Water Out'};
 
         if (this.state.tracker) {
-            const index = seriesRigsCrews.bisect(this.state.tracker);
-            const trackerEvent = seriesRigsCrews.at(index);
+            const index = seriesWaterOut.bisect(this.state.tracker);
+            const trackerEvent = seriesWaterOut.at(index);
         }
 
         return (
-
             <Grid container spacing={3}>
                     <Grid item xs={6} spacing={3}>
-                        <TableUI tableData={{data: tableRigs, tableName: 'Rigs and Crews'}} />
+                        <TableUI tableData={table} />
                     </Grid>
                     <Grid item xs={6} spacing={3} style={chartStyle} >
                         <div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <Resizable>
                                     <ChartContainer
                                         timeRange={range}
                                         timeAxisStyle={{
@@ -123,8 +116,7 @@ export default class Completion extends Component {
                                         }}
                                         showGrid={true}
                                         paddingRight={100}
-                                        maxTime={seriesRigsCrews.range().end()}
-                                        minTime={seriesRigsCrews.range().begin()}
+                                
                                         timeAxisAngledLabels={true}
                                         timeAxisHeight={65}
                                         onTrackerChanged={this.handleTrackerChanged}
@@ -137,9 +129,9 @@ export default class Completion extends Component {
                                         <ChartRow height="300">
                                             <YAxis
                                                 id="y"
-                                                label="Rigs and crews"
-                                                min={0.5}
-                                                max={50.5}
+                                                label="WaterOut"
+                                                min={0}
+                                                max={80000}
                                                 style={{
                                                     ticks: {
                                                         stroke: "#AAA",
@@ -157,8 +149,8 @@ export default class Completion extends Component {
                                                 <LineChart
                                                     axis="y"
                                                     breakLine={false}
-                                                    series={seriesRigsCrews}
-                                                    columns={["rigs", "crews"]}
+                                                    series={seriesWaterOut}
+                                                    columns={["waterOut"]}
                                                     style={style}
                                                     interpolation="curveBasis"
                                                     highlight={this.state.highlight}
@@ -180,7 +172,6 @@ export default class Completion extends Component {
                                             </Charts>
                                         </ChartRow>
                                     </ChartContainer>
-                                    </Resizable>
 
                                 </div>
                             </div>
@@ -192,10 +183,7 @@ export default class Completion extends Component {
                             </div>
                         </div>
                     </Grid>
-              <Production/> 
-              <WaterOut/>     
             </Grid>
-           
         );
 
     }

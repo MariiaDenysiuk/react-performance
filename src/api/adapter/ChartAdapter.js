@@ -32,18 +32,19 @@ class ChartAdapter  {
                    curRigs.push(dat);
                }
 
-               // if(key === "date") {
-               //     const dat = Date.parse(new Date(items['data']));
-               //     totalProduction.push(dat);
-               //     totalWaterout.push(dat);
-               // }
+               if(key === "date") {
+                   const dat = Date.parse(new Date(items['date']));
+                
+                   totalProduction.push(dat);
+                   totalWaterout.push(dat);
+               }
 
-               // if(key === "total_production") {
-               //     totalProduction.push(items['total_production']);
-               // }
-               // if(key === "total_waterout") {
-               //     totalWaterout.push(items['total_waterout']);
-               // }
+               if(key === "total_production") {
+                   totalProduction.push(items['total_production']);
+               }
+               if(key === "total_waterout") {
+                   totalWaterout.push(items['total_waterout']);
+               }
 
                if(key === "total_crews") {
                    curCrews.push(items['total_crews']);
@@ -55,15 +56,15 @@ class ChartAdapter  {
            }
            crews.push(curCrews);
            rigs.push(curRigs);
-           // waterOut.push(totalWaterout);
-           // production.push(totalProduction);
+           waterOut.push(totalWaterout);
+           production.push(totalProduction);
 
         });
 
 
         arr.chart = {rigs: rigs, crews: crews, waterOut: waterOut, production: production};
 
-
+       console.log(arr);
        return arr;
     }
 }
