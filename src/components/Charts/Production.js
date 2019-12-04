@@ -128,7 +128,7 @@ export default class Production extends Component {
                                                     id="y"
                                                     label="Production"
                                                     min={0}
-                                                    max={180050}
+                                                    max={300396}
                                                     style={{
                                                         ticks: {
                                                             stroke: "#AAA",
@@ -140,7 +140,7 @@ export default class Production extends Component {
                                                     hideAxisLine
                                                     width="60"
                                                     type="linear"
-                                                    format=",.2f"
+                                                    format=",.0f"
                                                 />
                                                 <Charts>
                                                     <LineChart

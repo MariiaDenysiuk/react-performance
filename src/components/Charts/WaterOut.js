@@ -127,7 +127,7 @@ export default class WaterOut extends Component {
                                         <ChartRow height="300">
                                             <YAxis
                                                 id="y"
-                                                label="WaterOut"
+                                                label="Water Out"
                                                 min={0}
                                                 max={80000}
                                                 style={{
@@ -141,7 +141,7 @@ export default class WaterOut extends Component {
                                                 hideAxisLine
                                                 width="60"
                                                 type="linear"
-                                                format=",.2f"
+                                                format=",.0f"
                                             />
                                             <Charts>
                                                 <LineChart

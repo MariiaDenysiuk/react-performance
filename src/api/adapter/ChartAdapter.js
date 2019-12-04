@@ -34,13 +34,13 @@ class ChartAdapter  {
 
                if(key === "date") {
                    const dat = Date.parse(new Date(items['date']));
-                
                    totalProduction.push(dat);
+
                    totalWaterout.push(dat);
                }
 
-               if(key === "total_production") {
-                   totalProduction.push(items['total_production']);
+               if(key === "total_production_with_waterout") {
+                   totalProduction.push(items['total_production_with_waterout']);
                }
                if(key === "total_waterout") {
                    totalWaterout.push(items['total_waterout']);

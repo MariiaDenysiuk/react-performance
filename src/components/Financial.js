@@ -10,7 +10,7 @@ export default class Financial extends Component {
     render() {
         return (
             <Grid container spacing={3}>
-
+                <Production/>
                 <Production/>
                 <WaterOut/>
                 <RigsCrews/>

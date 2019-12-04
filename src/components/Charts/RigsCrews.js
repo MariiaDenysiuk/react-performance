@@ -120,7 +120,7 @@ export default class RigsCrews extends Component {
                                     <ChartRow height="300">
                                         <YAxis
                                             id="y"
-                                            label="Rigs and crews"
+                                            label="Number of Rigs or Crews"
                                             min={0.5}
                                             max={50.5}
                                             style={{
