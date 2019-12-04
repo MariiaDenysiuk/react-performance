@@ -3,12 +3,9 @@ import { TimeSeries } from "pondjs";
 import { Charts, ChartContainer, ChartRow, YAxis, LineChart, styler } from "react-timeseries-charts";
 import 'react-datasheet/lib/react-datasheet.css';
 import API from "../../api/API";
-import TableUI from "../Table";
-import Grid from '@material-ui/core/Grid';
 import _ from "underscore";
 import { format } from "d3-format";
 import Baseline from "../BaseLine";
-import Resizable from "./Production";
 
 
 //-------------------charts-----------------
