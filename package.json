@@ -14,6 +14,7 @@
     "jquery-ui": "^1.12.1",
     "jqwidgets-scripts": "^8.3.2",
     "jsgrid": "^1.5.3",
+    "lodash": "^4.17.15",
     "material-table": "^1.50.0",
     "pondjs": "^0.9.0",
     "prop-types": "^15.7.2",

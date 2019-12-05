@@ -4,34 +4,13 @@ import { Charts, ChartContainer, ChartRow, YAxis, LineChart, styler } from "reac
 import 'react-datasheet/lib/react-datasheet.css';
 import API from "../../api/API";
 import _ from "underscore";
-import { format } from "d3-format";
 import Baseline from "../BaseLine";
 
-
-//-------------------charts-----------------
-function buildPoints() {
-    const waterOut = API.getWaterOut().chart.waterOut;
-    let points = [];
-    for (let i = 0; i < waterOut.length; i++) {
-        points.push([waterOut[i][0], waterOut[i][1]]);
-    }
-
-    return points;
-}
-
-const seriesWaterOut = new TimeSeries({
-    name: "Water out",
-    columns: ["time", "waterOut"],
-    points: buildPoints()
-});
-
-//-----------------tables----------------
-const tableRigs = API.getWaterOut().table;
-
 const style = styler([
-    { key: "waterOut", color: "red", width: 2 },
+    { key: "oilRevenue", color: "orange", width: 2 },
+    { key: "totalRevenue", color: "brown", width: 2 },
 ]);
-
+let count = 0;
 class CrossHairs extends React.Component {
     render() {
         const { x, y } = this.props;
@@ -50,16 +29,37 @@ class CrossHairs extends React.Component {
     }
 }
 
-const chartStyle = {
-    display: "flex",
-    alignItems: "center"
-};
+export default class TotalRevenues extends Component {
+    buildPoints() {
+        // const revenue = API.getRevenue(this.props);
+       let revenue;
 
-export default class TotalRevenue extends Component {
+        if(count === 0) {
+            const kon = JSON.parse(JSON.stringify(this.props));
+            revenue = API.getRevenue(kon);
+        }
+
+        count++;
+
+        const oilRevenue = revenue.oilRevenue;
+        const totalRevenue = revenue.totalRevenue;
+        let points = [];
+        for (let i = 0; i < oilRevenue.length; i++) {
+            points.push([oilRevenue[i][0], oilRevenue[i][1], totalRevenue[i][1]]);
+        }
+        return points;
+    }
+
+    series = new TimeSeries({
+        name: "Total Revenue and Oil revenue",
+        columns: ["time", "oilRevenue", "totalRevenue"],
+        points: this.buildPoints()
+    });
+
 
     state = {
         tracker: null,
-        timerange: seriesWaterOut.range(),
+        timerange: this.series.range(),
         x: null,
         y: null
     };
@@ -81,17 +81,14 @@ export default class TotalRevenue extends Component {
     };
 
     render() {
-        const f = format("$,.2f");
         const range = this.state.timerange;
-        const table = {data: tableRigs, tableName: 'Water Out'};
 
         if (this.state.tracker) {
-            const index = seriesWaterOut.bisect(this.state.tracker);
-            const trackerEvent = seriesWaterOut.at(index);
+            const index = this.series.bisect(this.state.tracker);
+            const trackerEvent = this.series.at(index);
         }
 
         return (
-
             <div style={{width: '100%'}}>
                 <div style={{width: '100%'}}>
                     <div style={{width: '100%'}}>
@@ -111,7 +108,8 @@ export default class TotalRevenue extends Component {
                             }}
                             showGrid={true}
                             paddingRight={100}
-
+                            maxTime={this.series.range().end()}
+                            minTime={this.series.range().begin()}
                             timeAxisAngledLabels={true}
                             timeAxisHeight={65}
                             onTrackerChanged={this.handleTrackerChanged}
@@ -124,9 +122,9 @@ export default class TotalRevenue extends Component {
                             <ChartRow height="300">
                                 <YAxis
                                     id="y"
-                                    label="Water Out"
-                                    min={0}
-                                    max={80000}
+                                    label="Total Revenue and Oil Revenue"
+                                    min={0.5}
+                                    max={100995}
                                     style={{
                                         ticks: {
                                             stroke: "#AAA",
@@ -138,14 +136,13 @@ export default class TotalRevenue extends Component {
                                     hideAxisLine
                                     width="60"
                                     type="linear"
-                                    format=",.0f"
                                 />
                                 <Charts>
                                     <LineChart
                                         axis="y"
                                         breakLine={false}
-                                        series={seriesWaterOut}
-                                        columns={["waterOut"]}
+                                        series={this.series}
+                                        columns={["oilRevenue", "totalRevenue"]}
                                         style={style}
                                         interpolation="curveBasis"
                                         highlight={this.state.highlight}
@@ -172,10 +169,12 @@ export default class TotalRevenue extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-2" style={{fontSize: '14px', display: 'flex', justifyContent: 'flex-end', marginBottom: "20px"}}>
-                        <span style={{color: 'red'}}>--water out</span>
+                        <span style={{color: 'orange'}}>--oilRevenue</span>
+                        <span style={{color: 'brown'}}>--totalRevenue</span>
                     </div>
                 </div>
             </div>
+
 
         );
 
