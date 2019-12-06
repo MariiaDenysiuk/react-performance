@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import MaterialTableDemo from "../components/Wells";
 import Drilling from "../components/Drilling";
 import Completion from "./Completion";
-import { teal } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
 import Financial from "./Financial";
 
 function TabPanel(props) {
@@ -44,9 +44,9 @@ function a11yProps(index) {
 
 const theme = createMuiTheme({
     palette: {
-        primary: teal,
+        primary: grey,
         secondary: {
-            main: '#b2dfdb',
+            main: '#f5f5f5',
         },
     },
 });
@@ -61,7 +61,7 @@ export default function SimpleTabs() {
     return (
         <ThemeProvider theme={theme}>
             <div>
-                <AppBar position="static">
+                <AppBar position="static" style={{backgroundColor: '#212121', color: 'white'}}>
                     <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
                         <Tab label="Wells" {...a11yProps(0)} />
                         <Tab label="Drills" {...a11yProps(1)} />

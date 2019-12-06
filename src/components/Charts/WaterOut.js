@@ -29,7 +29,7 @@ const seriesWaterOut = new TimeSeries({
 const tableRigs = API.getWaterOut().table;
 
 const style = styler([
-    { key: "waterOut", color: "red", width: 2 },
+    { key: "waterOut", color: "cadetblue", width: 2 },
 ]);
 
 class CrossHairs extends React.Component {
@@ -92,7 +92,7 @@ export default class WaterOut extends Component {
 
         return (
 
-                        <div style={{width: '100%'}}>
+                        <div style={{width: '100%', overflow: "hidden"}}>
                             <div style={{width: '100%'}}>
                                 <div style={{width: '100%'}}>
 
@@ -172,7 +172,7 @@ export default class WaterOut extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-2" style={{fontSize: '14px', display: 'flex', justifyContent: 'flex-end', marginBottom: "20px"}}>
-                                    <span style={{color: 'red'}}>--water out</span>
+                                    <span style={{color: 'cadetblue'}}>--water out</span>
                                 </div>
                             </div>
                         </div>
