@@ -6,11 +6,35 @@ import WaterOut from "./Charts/WaterOut";
 import RigsCrews from "./Charts/RigsCrews";
 import TotalRevenues from "./Charts/TotalRevenue";
 
-function totalRevenue(x, y, state) {
-   const mult = x.map((el, i) => el * y[i]);
-    state.data2[0].date1 = mult[1];
-    state.data2[0].date2 = mult[2];
-    state.data2[0].date3 = mult[3];
+function totalRevenue(x, y, state, currentName) {
+    console.log(currentName)
+   const mult = x.map((el, i) => el * +y[i]);
+    state.data2.map((el, i) => {
+       if(el.price_name.includes(currentName)) {
+           console.log(mult)
+           state.data2[i].date1 = mult[0].toFixed(2);
+           state.data2[i].date2 = mult[1].toFixed(2);
+           state.data2[i].date3 = mult[2].toFixed(2);
+       }
+    });
+}
+
+function totalMboe(x, y, state, currentName) {
+    const par1 = 6;
+    const par2 = 1;
+
+    // const MBOE = oil + gas / parameter1 + NGL
+
+    console.log(currentName)
+    const mult = x.map((el, i) => el * +y[i]);
+    state.data2.map((el, i) => {
+        if(el.price_name.includes(currentName)) {
+            console.log(mult)
+            state.data2[i].date1 = mult[0].toFixed(2);
+            state.data2[i].date2 = mult[1].toFixed(2);
+            state.data2[i].date3 = mult[2].toFixed(2);
+        }
+    });
 }
 
 function findData(findIn, item) {
@@ -20,11 +44,14 @@ function findData(findIn, item) {
     let y;
     findData.forEach(
         el => {
+            const it = JSON.parse(JSON.stringify(curretItem))
             if(el.price_name === curretItem.price_name) {
                 delete el.tableData;
                 delete el.price_name;
+                delete it.price_name;
+                delete it.tableData;
                 x = Object.values(el);
-                y =  Object.values(curretItem);
+                y =  Object.values(it);
             }
         }
     );
@@ -84,6 +111,11 @@ export default function Financial() {
                 <MaterialTable
                     title="Producing and Pricing"
                     columns={state.columns}
+                    options={{
+                        search: false,
+                        paging: false,
+                        toolbar: false
+                    }}
                     data={state.data}
                     editable={{
                         onRowAdd: newData =>
@@ -105,10 +137,9 @@ export default function Financial() {
                                         setState(prevState => {
                                             const data = [...prevState.data];
                                             data[data.indexOf(oldData)] = newData;
-                                             // console.log(state.data1);
-                                             // console.log(newData);
                                             const res = findData(JSON.parse(JSON.stringify(state.data1)), newData);
-                                            totalRevenue(res.x, res.y, state);
+                                            console.log(newData)
+                                            totalRevenue(res.x, res.y, state, newData.price_name);
                                             return { ...prevState, data };
                                         });
                                     }
@@ -126,10 +157,15 @@ export default function Financial() {
                                 }, 600);
                             }),
                     }}
+
                 />
 
-
                 <MaterialTable
+                    options={{
+                        search: false,
+                        paging: false,
+                        toolbar: false
+                    }}
                     title=""
                     columns={state.columns1}
                     data={state.data1}
@@ -153,6 +189,10 @@ export default function Financial() {
                                         setState(prevState => {
                                             const data = [...prevState.data];
                                             data[data.indexOf(oldData)] = newData;
+
+                                            const res = findData(JSON.parse(JSON.stringify(state.data1)), newData);
+                                            totalRevenue(res.x, res.y, state, newData.price_name);
+
                                             return { ...prevState, data };
                                         });
                                     }
@@ -174,6 +214,11 @@ export default function Financial() {
 
 
                 <MaterialTable
+                    options={{
+                        search: false,
+                        paging: false,
+                        toolbar: false
+                    }}
                     title="Income statement"
                     columns={state.columns2}
                     data={state.data2}

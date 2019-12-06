@@ -5,15 +5,15 @@ import ChartAdapter from "./adapter/ChartAdapter";
 import { drills } from "./testData/drills";
 import { options } from "./endpoints";
 import { wells } from "../api/testData/wells";
-import { oil_price } from "../api/testData/Oil_Price";
 import { rigsCrews_schedule } from "./testData/rigsCrewsDataTable";
 import { production_schedule } from "./testData/productionDataTable";
-import FinancialAdapter from "./adapter/FinancialAdapter";
 import ProductionPricingAdapter from "./adapter/ProductionPricingAdapter";
 import {drilling_schedule} from "./testData/drilling_schedule";
 
 class API {
-    getData() {
+
+    // wells data for first tab   ------- 1 tab -------------
+    getWellsData() {
         // axios.get(`${options.root}/wells_list`)
         //     .then(res => {
         //       return WellAdapter.getData(res);
@@ -30,6 +30,7 @@ class API {
         //     });
     }
 
+    // drills data for second   ------- 2 tab ----------------
     getDrillData() {
         // axios.get(`${options.root}/drilling_default`)
         //     .then(res => {
@@ -37,7 +38,6 @@ class API {
         //     });
         if(!options.root) return DrillsAdapter.getData(drills);
     }
-
 
     getDrillDataTable() {
         // axios.get(`${options.root}/drilling_default`)

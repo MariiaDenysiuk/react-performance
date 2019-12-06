@@ -10,11 +10,38 @@ const style = styler([
     { key: "oilRevenue", color: "orange", width: 2 },
     { key: "totalRevenue", color: "brown", width: 2 },
 ]);
-let count = 0;
+
+let pointss = [[1556571600000, 105.781, 101490],
+    [1559250000000, 104.054, 99995],
+     [1561842000000, 97.07, 94477]];
+
+function buildPoints(props) {
+    // const revenue = API.getRevenue(this.props);
+    let revenue;
+
+    const kon = JSON.parse(JSON.stringify(props));
+    revenue = API.getRevenue(kon);
+
+
+    const oilRevenue = revenue.oilRevenue;
+    const totalRevenue = revenue.totalRevenue;
+    let points = [];
+    for (let i = 0; i < oilRevenue.length; i++) {
+        points.push([oilRevenue[i][0], oilRevenue[i][1], totalRevenue[i][1]]);
+    }
+    pointss = points;
+}
+
+
+const series = new TimeSeries({
+    name: "Total Revenue and Oil revenue",
+    columns: ["time", "oilRevenue", "totalRevenue"],
+    points: pointss
+});
+
 class CrossHairs extends React.Component {
     render() {
         const { x, y } = this.props;
-
         const style = { pointerEvents: "none", stroke: "#ccc" };
         if (!_.isNull(x) && !_.isNull(y)) {
             return (
@@ -30,36 +57,40 @@ class CrossHairs extends React.Component {
 }
 
 export default class TotalRevenues extends Component {
-    buildPoints() {
-        // const revenue = API.getRevenue(this.props);
-       let revenue;
-
-        if(count === 0) {
-            const kon = JSON.parse(JSON.stringify(this.props));
-            revenue = API.getRevenue(kon);
-        }
-
-        count++;
-
-        const oilRevenue = revenue.oilRevenue;
-        const totalRevenue = revenue.totalRevenue;
-        let points = [];
-        for (let i = 0; i < oilRevenue.length; i++) {
-            points.push([oilRevenue[i][0], oilRevenue[i][1], totalRevenue[i][1]]);
-        }
-        return points;
+    constructor(props) {
+        super(props);
     }
 
-    series = new TimeSeries({
-        name: "Total Revenue and Oil revenue",
-        columns: ["time", "oilRevenue", "totalRevenue"],
-        points: this.buildPoints()
-    });
+    static getDerivedStateFromProps(nextProps, prevState) {
+        pointss = buildPoints(nextProps)
+    }
+    //
+    // buildPoints() {
+    //     // const revenue = API.getRevenue(this.props);
+    //
+    //     const kon = JSON.parse(JSON.stringify(this.props));
+    //     let revenue = API.getRevenue(kon);
+    //
+    //     const oilRevenue = revenue.oilRevenue;
+    //     const totalRevenue = revenue.totalRevenue;
+    //     let points = [];
+    //     for (let i = 0; i < oilRevenue.length; i++) {
+    //         points.push([oilRevenue[i][0], oilRevenue[i][1], totalRevenue[i][1]]);
+    //     }
+    //     console.log(revenue);
+    //     return points;
+    // }
+    //
+    // series = new TimeSeries({
+    //     name: "Total Revenue and Oil revenue",
+    //     columns: ["time", "oilRevenue", "totalRevenue"],
+    //     points: this.buildPoints()
+    // });
 
 
     state = {
         tracker: null,
-        timerange: this.series.range(),
+        timerange: series.range(),
         x: null,
         y: null
     };
@@ -84,8 +115,8 @@ export default class TotalRevenues extends Component {
         const range = this.state.timerange;
 
         if (this.state.tracker) {
-            const index = this.series.bisect(this.state.tracker);
-            const trackerEvent = this.series.at(index);
+            const index = series.bisect(this.state.tracker);
+            const trackerEvent = series.at(index);
         }
 
         return (
@@ -108,8 +139,8 @@ export default class TotalRevenues extends Component {
                             }}
                             showGrid={true}
                             paddingRight={100}
-                            maxTime={this.series.range().end()}
-                            minTime={this.series.range().begin()}
+                            maxTime={series.range().end()}
+                            minTime={series.range().begin()}
                             timeAxisAngledLabels={true}
                             timeAxisHeight={65}
                             onTrackerChanged={this.handleTrackerChanged}
@@ -141,7 +172,7 @@ export default class TotalRevenues extends Component {
                                     <LineChart
                                         axis="y"
                                         breakLine={false}
-                                        series={this.series}
+                                        series={series}
                                         columns={["oilRevenue", "totalRevenue"]}
                                         style={style}
                                         interpolation="curveBasis"

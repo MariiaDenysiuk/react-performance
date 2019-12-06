@@ -18,7 +18,6 @@ class ProductionPricingAdapter  {
             const test1 = [];
 
             if(e.price_name === 'Oil Revenue') {
-                console.log(e)
                 delete e.tableData;
                 delete e.price_name;
                 oilRevenue = this.passData(Object.values(e), dateItems);
@@ -33,7 +32,6 @@ class ProductionPricingAdapter  {
             const test1 = [];
 
             if(e.price_name === 'Total Revenue') {
-                console.log(e)
                 delete e.tableData;
                 delete e.price_name;
                 totalRevenue = this.passData(Object.values(e), dateItems);
