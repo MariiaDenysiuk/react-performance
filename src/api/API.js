@@ -5,37 +5,47 @@ import ChartAdapter from "./adapter/ChartAdapter";
 import { drills } from "./testData/drills";
 import { options } from "./endpoints";
 import { wells } from "../api/testData/wells";
-import { production } from "./testData/production";
 import { rigsCrews_schedule } from "./testData/rigsCrewsDataTable";
-import { water_schedule } from "./testData/waterDataTable";
-import { water } from "./testData/water";
 import { production_schedule } from "./testData/productionDataTable";
-import { crewsRigs } from "./testData/RigsCrews";
+import ProductionPricingAdapter from "./adapter/ProductionPricingAdapter";
+import {drilling_schedule} from "./testData/drilling_schedule";
 
 class API {
-    getData() {
-        axios.get(`${options.root}/wells_list`)
-            .then(res => {
-              return WellAdapter.getData(res);
-            }).catch(error => {
 
-        });
+    // wells data for first tab   ------- 1 tab -------------
+    getWellsData() {
+        // axios.get(`${options.root}/wells_list`)
+        //     .then(res => {
+        //       return WellAdapter.getData(res);
+        //     }).catch(error => {
+        //
+        // });
         if(!options.root) return WellAdapter.getData(wells);
     }
 
     updateWells() {
-        axios.post(`${options.root}/wells_update`)
-            .then(res => {
-                console.log(res);
-            });
+        // axios.post(`${options.root}/wells_update`)
+        //     .then(res => {
+        //         console.log(res);
+        //     });
     }
 
+    // drills data for second   ------- 2 tab ----------------
     getDrillData() {
-        axios.get(`${options.root}/drilling_default`)
-            .then(res => {
-                return DrillsAdapter.getData(res);
-            });
+        // axios.get(`${options.root}/drilling_default`)
+        //     .then(res => {
+        //         return DrillsAdapter.getData(res);
+        //     });
         if(!options.root) return DrillsAdapter.getData(drills);
+    }
+
+    getDrillDataTable() {
+        // axios.get(`${options.root}/drilling_default`)
+        //     .then(res => {
+        //         return DrillsAdapter.getData(res);
+        //     });
+        console.log(DrillsAdapter.getParsedDataSet(drilling_schedule))
+        if(!options.root) return DrillsAdapter.getParsedDataSet(drilling_schedule);
     }
 
     postDrillData(runDrillData) {
@@ -48,28 +58,37 @@ class API {
     // ----------------- completion tab -----------------------------------
 
     getCrewsData() {
-        axios.post(`${options.root}/drilling/CrewsData?`)
-            .then(res => {
-                return ChartAdapter.getData(res);
-            });
+        // axios.post(`${options.root}/drilling/CrewsData?`)
+        //     .then(res => {
+        //         return ChartAdapter.getData(res);
+        //     });
         if(!options.root) return ChartAdapter.getData(rigsCrews_schedule, rigsCrews_schedule);
     }
 
     getWaterOut() {
-        axios.post(`${options.root}/drilling/waterOut`)
-            .then(res => {
-                return ChartAdapter.getData(res);
-            });
+        // axios.post(`${options.root}/drilling/waterOut`)
+        //     .then(res => {
+        //         return ChartAdapter.getData(res);
+        //     });
         if(!options.root) return ChartAdapter.getData(production_schedule, production_schedule);
     }
 
     getProduction() {
-        axios.post(`${options.root}/drilling/production`)
-            .then(res => {
-                return ChartAdapter.getData(res);
-            });
+        // axios.post(`${options.root}/drilling/production`)
+        //     .then(res => {
+        //         return ChartAdapter.getData(res);
+        //     });
         if(!options.root) return ChartAdapter.getData(production_schedule, production_schedule);
     }
+
+    // for now
+
+    getRevenue(data) {
+        return ProductionPricingAdapter.getRevenue(data);
+    }
+
+
+
 }
 
 export default new API();

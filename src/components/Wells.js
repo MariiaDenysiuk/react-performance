@@ -3,10 +3,10 @@ import MaterialTable from 'material-table';
 import API from "../api/API";
 
 export default function MaterialTableDemo(props) {
-
+    const data  = API.getWellsData()
     const [state, setState] = React.useState({
-        columns: API.getData().header,
-        data: API.getData().body,
+        columns: data.header,
+        data: data.body,
     });
 
     return (
