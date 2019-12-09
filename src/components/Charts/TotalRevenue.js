@@ -11,33 +11,36 @@ const style = styler([
     { key: "totalRevenue", color: "brown", width: 2 },
 ]);
 
-let pointss = [[1556571600000, 105.781, 101490],
-    [1559250000000, 104.054, 99995],
-     [1561842000000, 97.07, 94477]];
+// let pointss = [[1556571600000, 105.781, 101490],
+//     [1559250000000, 104.054, 99995],
+//      [1561842000000, 97.07, 94477]];
 
-function buildPoints(props) {
-    // const revenue = API.getRevenue(this.props);
-    let revenue;
+// function buildPoints(props) {
 
-    const kon = JSON.parse(JSON.stringify(props));
-    revenue = API.getRevenue(kon);
+//     // const revenue = API.getRevenue(this.props);
+//     let revenue;
 
-
-    const oilRevenue = revenue.oilRevenue;
-    const totalRevenue = revenue.totalRevenue;
-    let points = [];
-    for (let i = 0; i < oilRevenue.length; i++) {
-        points.push([oilRevenue[i][0], oilRevenue[i][1], totalRevenue[i][1]]);
-    }
-    pointss = points;
-}
+//     const kon = JSON.parse(JSON.stringify(props));
+//     revenue = API.getRevenue(kon);
 
 
-const series = new TimeSeries({
-    name: "Total Revenue and Oil revenue",
-    columns: ["time", "oilRevenue", "totalRevenue"],
-    points: pointss
-});
+//     const oilRevenue = revenue.oilRevenue;
+//     const totalRevenue = revenue.totalRevenue;
+//     let points = [];
+//     for (let i = 0; i < oilRevenue.length; i++) {
+//         points.push([oilRevenue[i][0], oilRevenue[i][1], totalRevenue[i][1]]);
+//     }
+ 
+//     pointss =  points;
+// }
+
+
+
+// const series = new TimeSeries({
+//     name: "Total Revenue and Oil revenue",
+//     columns: ["time", "oilRevenue", "totalRevenue"],
+//     points: pointss
+// });
 
 class CrossHairs extends React.Component {
     render() {
@@ -62,35 +65,12 @@ export default class TotalRevenues extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        pointss = buildPoints(nextProps)
+        console.log(nextProps.data.columns[1].title) 
     }
-    //
-    // buildPoints() {
-    //     // const revenue = API.getRevenue(this.props);
-    //
-    //     const kon = JSON.parse(JSON.stringify(this.props));
-    //     let revenue = API.getRevenue(kon);
-    //
-    //     const oilRevenue = revenue.oilRevenue;
-    //     const totalRevenue = revenue.totalRevenue;
-    //     let points = [];
-    //     for (let i = 0; i < oilRevenue.length; i++) {
-    //         points.push([oilRevenue[i][0], oilRevenue[i][1], totalRevenue[i][1]]);
-    //     }
-    //     console.log(revenue);
-    //     return points;
-    // }
-    //
-    // series = new TimeSeries({
-    //     name: "Total Revenue and Oil revenue",
-    //     columns: ["time", "oilRevenue", "totalRevenue"],
-    //     points: this.buildPoints()
-    // });
-
 
     state = {
         tracker: null,
-        timerange: series.range(),
+        timerange: this.props.data.point.range(),
         x: null,
         y: null
     };
@@ -114,6 +94,8 @@ export default class TotalRevenues extends Component {
     render() {
         const range = this.state.timerange;
 
+        const series = this.props.data.point;
+        console.log(series);
         if (this.state.tracker) {
             const index = series.bisect(this.state.tracker);
             const trackerEvent = series.at(index);
@@ -200,8 +182,9 @@ export default class TotalRevenues extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-2" style={{fontSize: '14px', display: 'flex', justifyContent: 'flex-end', marginBottom: "20px"}}>
-                        <span style={{color: 'orange'}}>--oilRevenue</span>
+                        <span style={{color: 'orange'}}>--oilRevenue </span>
                         <span style={{color: 'brown'}}>--totalRevenue</span>
+                        <span>{this.props.data.series}</span>
                     </div>
                 </div>
             </div>
