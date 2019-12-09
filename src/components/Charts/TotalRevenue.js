@@ -11,37 +11,6 @@ const style = styler([
     { key: "totalRevenue", color: "brown", width: 2 },
 ]);
 
-// let pointss = [[1556571600000, 105.781, 101490],
-//     [1559250000000, 104.054, 99995],
-//      [1561842000000, 97.07, 94477]];
-
-// function buildPoints(props) {
-
-//     // const revenue = API.getRevenue(this.props);
-//     let revenue;
-
-//     const kon = JSON.parse(JSON.stringify(props));
-//     revenue = API.getRevenue(kon);
-
-
-//     const oilRevenue = revenue.oilRevenue;
-//     const totalRevenue = revenue.totalRevenue;
-//     let points = [];
-//     for (let i = 0; i < oilRevenue.length; i++) {
-//         points.push([oilRevenue[i][0], oilRevenue[i][1], totalRevenue[i][1]]);
-//     }
- 
-//     pointss =  points;
-// }
-
-
-
-// const series = new TimeSeries({
-//     name: "Total Revenue and Oil revenue",
-//     columns: ["time", "oilRevenue", "totalRevenue"],
-//     points: pointss
-// });
-
 class CrossHairs extends React.Component {
     render() {
         const { x, y } = this.props;
@@ -62,10 +31,6 @@ class CrossHairs extends React.Component {
 export default class TotalRevenues extends Component {
     constructor(props) {
         super(props);
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log(nextProps.data.columns[1].title) 
     }
 
     state = {
@@ -95,14 +60,13 @@ export default class TotalRevenues extends Component {
         const range = this.state.timerange;
 
         const series = this.props.data.point;
-        console.log(series);
         if (this.state.tracker) {
             const index = series.bisect(this.state.tracker);
             const trackerEvent = series.at(index);
         }
 
         return (
-            <div style={{width: '100%'}}>
+            <div style={{width: '100%', overflow: 'hidden'}}>
                 <div style={{width: '100%'}}>
                     <div style={{width: '100%'}}>
 

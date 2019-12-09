@@ -26,7 +26,6 @@ class ProductionPricingAdapter  {
 
         // total revenue
         data.data2.forEach(e => {
-            const test1 = [];
             if(e.price_name === 'Total Revenue') {
                 delete e.tableData;
                 delete e.price_name;

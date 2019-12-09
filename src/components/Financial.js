@@ -17,9 +17,9 @@ const dd = {
 
     ],
     data: [
-        { price_name: 'Gas', date1: 2.05, date2: 2.05, date3: 2.05 },
-        { price_name: 'Oil', date1: 92.56, date2: 90.47, date3: 88.10 },
-        { price_name: 'Liquids', date1: '', date2: '', date3: '' },
+        { price_name: 'Gas ($/Mbtu)', date1: 2.05, date2: 2.05, date3: 2.05 },
+        { price_name: 'Oil ($/Bbl)', date1: 92.56, date2: 90.47, date3: 88.10 },
+        { price_name: 'Liquids ($/Bbbl)', date1: '', date2: '', date3: '' },
     ],
 
     columns1: [
@@ -31,9 +31,11 @@ const dd = {
     ],
     data1: [
         { price_name: 'Production', date1: '', date2: '', date3: '' },
-        { price_name: 'Gas', date1: 1.415, date2: 1.429, date3: 1.384 },
-        { price_name: 'Oil', date1: 1.149, date2: 1.156, date3: 1.107 },
+        { price_name: 'Gas (Mmcf)', date1: 1.415, date2: 1.429, date3: 1.384 },
+        { price_name: 'Oil (Mbls)', date1: 1.149, date2: 1.156, date3: 1.107 },
         { price_name: 'NGLs(Mbls)', date1: '', date2: '', date3: '' },
+        { price_name: 'Total(Mboe)', date1: '', date2: '', date3: '' },
+        { price_name: 'Total(Mboepd)', date1: '', date2: '', date3: '' },
     ],
 
     columns2: [
@@ -57,7 +59,6 @@ function totalRevenue(x, y, state, currentName) {
    const mult = x.map((el, i) => el * +y[i]);
     state.data2.map((el, i) => {
        if(el.price_name.includes(currentName)) {
-           console.log(mult)
            state.data2[i].date1 = mult[0].toFixed(2);
            state.data2[i].date2 = mult[1].toFixed(2);
            state.data2[i].date3 = mult[2].toFixed(2);
@@ -68,9 +69,8 @@ function totalRevenue(x, y, state, currentName) {
 function sumRevenue(state) {
   let sum = {};
   const currenData = JSON.parse(JSON.stringify(state));
-  const fieldName = '';
   currenData.columns.map((col, i) => {
-      if(i !=0 ) {
+      if(i !== 0 ) {
         currenData.data2.map((dat, j) => {
          if(dat.price_name !== 'Total Revenue') {
            if(!sum.hasOwnProperty(col.field)) { 
@@ -88,24 +88,33 @@ function sumRevenue(state) {
   return sum;
 }
 
-function totalMboe(x, y, state, currentName) {
-    const par1 = 6;
-    const par2 = 1;
-    const mult = x.map((el, i) => el * +y[i]);
-    state.data2.map((el, i) => {
-        if(el.price_name.includes(currentName)) {
-            state.data2[i].date1 = mult[0].toFixed(2);
-            state.data2[i].date2 = mult[1].toFixed(2);
-            state.data2[i].date3 = mult[2].toFixed(2);
+function totalMboe(state) {
+    let totalMboe = {};
+    const currenData = JSON.parse(JSON.stringify(state));
+    currenData.columns.map((col, i) => {
+        if(i !== 0 ) {
+            currenData.data1.map((dat, j) => {
+                if(dat.price_name !== 'Total(Mboe)' || dat.price_name !== 'Total(Mboepd)') {
+                    if(!totalMboe.hasOwnProperty(col.field)) {
+                        totalMboe[col.field] = 0
+                    }
+
+                    const mboe =( j === 0) ? +dat[col.field]/6 : +dat[col.field];
+                    console.log(mboe);
+                    totalMboe[col.field] =  +totalMboe[col.field] + +mboe.toFixed(2);
+                }
+            })
         }
     });
+
+    state.data1[state.data1.length - 2]['date1'] = totalMboe['date1'];
+    state.data1[state.data1.length - 2]['date2'] = totalMboe['date2'];
+    state.data1[state.data1.length - 2]['date3'] = totalMboe['date3'];
 }
 
 function buildPoints(props) {
-    // const revenue = API.getRevenue(this.props);
-    let revenue;
     const kon = JSON.parse(JSON.stringify(props));
-    revenue = API.getRevenue(kon);
+    let revenue = API.getRevenue(kon);
 
     const oilRevenue = revenue.oilRevenue;
     const totalRevenue = revenue.totalRevenue;
@@ -129,8 +138,8 @@ function findData(findIn, item) {
     let y;
     findData.forEach(
         el => {
-            const it = JSON.parse(JSON.stringify(curretItem))
-            if(el.price_name === curretItem.price_name) {
+            const it = JSON.parse(JSON.stringify(curretItem));
+            if(el.price_name.includes(curretItem.price_name)) {
                 delete el.tableData;
                 delete el.price_name;
                 delete it.price_name;
@@ -146,7 +155,7 @@ function findData(findIn, item) {
 export default function Financial() {
     const [state, setState] = React.useState({
         columns: [
-            { title: 'Price Deck', field: 'price_name', editable: 'never', cellStyle: {textAlign: 'right'}, headerStyle: {textAlign: 'right'} },
+            { title: 'PPrice Deck', field: 'price_name', editable: 'never', cellStyle: {textAlign: 'right'}, headerStyle: {textAlign: 'right'} },
             { title: '4/30/19', field: 'date1', type: 'currency', cellStyle: {textAlign: 'right'}, headerStyle: {textAlign: 'right'} },
             { title: '5/31/19', field: 'date2', type: 'currency', cellStyle: {textAlign: 'right'}, headerStyle: {textAlign: 'right'} },
             { title: '6/30/19', field: 'date3', type: 'currency', cellStyle: {textAlign: 'right'}, headerStyle: {textAlign: 'right'} },
@@ -155,12 +164,11 @@ export default function Financial() {
         data: [
             { price_name: 'Gas', date1: 2.05, date2: 2.05, date3: 2.05 },
             { price_name: 'Oil', date1: 92.56, date2: 90.47, date3: 88.10 },
-            { price_name: 'Liquids', date1: '', date2: '', date3: '' },
+            { price_name: 'NGLs', date1: 77, date2: 9, date3: 10 },
         ],
 
         point: buildPoints(dd),
-        
-        totalPoint: buildPoints(dd),
+
 
         columns1: [
             { title: 'Production', field: 'price_name', editable: 'never', cellStyle: {textAlign: 'right'}, headerStyle: {textAlign: 'right'}  },
@@ -172,8 +180,11 @@ export default function Financial() {
         data1: [
             { price_name: 'Gas', date1: 1.415, date2: 1.429, date3: 1.384 },
             { price_name: 'Oil', date1: 1.149, date2: 1.156, date3: 1.107 },
-            { price_name: 'NGLs(Mbls)', date1: '', date2: '', date3: '' },
+            { price_name: 'NGLs', date1: 337, date2: 333, date3: 323 },
+            { price_name: 'Total(Mboe)', date1: 0, date2: 0, date3: 0 },
+            { price_name: 'Total(Mboepd)', date1: 0, date2: 0, date3: 0 },
         ],
+
 
         columns2: [
             { title: '', field: 'price_name', editable: 'never', cellStyle: {textAlign: 'right'} , headerStyle: {textAlign: 'right'} },
@@ -202,7 +213,6 @@ export default function Financial() {
                     options={{
                         search: false,
                         paging: false,
-                        toolbar: false,
                         sorting: false
                     }}
                     data={state.data}
@@ -216,17 +226,20 @@ export default function Financial() {
                                         setState(prevState => {
                                             const data = [...prevState.data];
                                             data[data.indexOf(oldData)] = newData;
+
+
                                             const res = findData(JSON.parse(JSON.stringify(state.data1)), newData);
                                             totalRevenue(res.x, res.y, state, newData.price_name);
                                             sumRevenue(state);
+
                                             state.point = buildPoints(state);
-                                
+
                                             return { ...prevState, data };
                                         });
                                     }
                                 }, 600);
                             }),
-                        
+
                     }}
 
                 />
@@ -249,13 +262,17 @@ export default function Financial() {
                                     resolve();
                                     if (oldData) {
                                         setState(prevState => {
-                                            const data = [...prevState.data];
-                                            data[data.indexOf(oldData)] = newData;
+                                            const data1 = [...prevState.data1];
+                                            data1[data1.indexOf(oldData)] = newData;
 
-                                            const res = findData(JSON.parse(JSON.stringify(state.data1)), newData);
+
+                                            const res = findData(JSON.parse(JSON.stringify(state.data)), newData);
                                             totalRevenue(res.x, res.y, state, newData.price_name);
+                                            sumRevenue(state);
+                                            totalMboe(state);
+                                            state.point = buildPoints(state);
 
-                                            return { ...prevState, data };
+                                            return { ...prevState, data1 };
                                         });
                                     }
                                 }, 600);
@@ -264,33 +281,18 @@ export default function Financial() {
                     }}
                 />
 
+
+
+
                 <MaterialTable
                     options={{
                         search: false,
                         paging: false,
-                        toolbar: false,
                         sorting: false
                     }}
                     title="Income statement"
                     columns={state.columns2}
                     data={state.data2}
-                    editable={{
-                       
-                        onRowUpdate: (newData, oldData) =>
-                            new Promise(resolve => {
-                                setTimeout(() => {
-                                    resolve();
-                                    if (oldData) {
-                                        setState(prevState => {
-                                            const data = [...prevState.data];
-                                            data[data.indexOf(oldData)] = newData;
-                                            return { ...prevState, data };
-                                        });
-                                    }
-                                }, 600);
-                            }),
-                       
-                    }}
                 />
             </Grid>
 
