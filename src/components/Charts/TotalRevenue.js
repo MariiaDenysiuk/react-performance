@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { TimeSeries } from "pondjs";
 import { Charts, ChartContainer, ChartRow, YAxis, LineChart, styler } from "react-timeseries-charts";
 import 'react-datasheet/lib/react-datasheet.css';
-import API from "../../api/API";
 import _ from "underscore";
 import Baseline from "../BaseLine";
 

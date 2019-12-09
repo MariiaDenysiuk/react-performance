@@ -5,10 +5,12 @@ import ChartAdapter from "./adapter/ChartAdapter";
 import { drills } from "./testData/drills";
 import { options } from "./endpoints";
 import { wells } from "../api/testData/wells";
+import { financial } from "../api/testData/financial";
 import { rigsCrews_schedule } from "./testData/rigsCrewsDataTable";
 import { production_schedule } from "./testData/productionDataTable";
 import ProductionPricingAdapter from "./adapter/ProductionPricingAdapter";
 import {drilling_schedule} from "./testData/drilling_schedule";
+import FinancialAdapter from "./adapter/FinancialAdapter";
 
 class API {
 
@@ -78,6 +80,7 @@ class API {
         //     .then(res => {
         //         return ChartAdapter.getData(res);
         //     });
+        console.log(ChartAdapter.getData(production_schedule, production_schedule));
         if(!options.root) return ChartAdapter.getData(production_schedule, production_schedule);
     }
 
@@ -85,6 +88,10 @@ class API {
 
     getRevenue(data) {
         return ProductionPricingAdapter.getRevenue(data);
+    }
+
+    getFiancial() {
+        return FinancialAdapter.getData(financial);
     }
 
 
