@@ -10,7 +10,7 @@ import Baseline from "../BaseLine";
 
 //-------------------charts-----------------
 function buildPoints() {
-    const waterOut = API.getWaterOut().chart.waterOut;
+    const waterOut = API.getProductionWaterOut().chart.waterOut;
     let points = [];
     for (let i = 0; i < waterOut.length; i++) {
         points.push([waterOut[i][0], waterOut[i][1]]);
@@ -25,8 +25,6 @@ const seriesWaterOut = new TimeSeries({
     points: buildPoints()
 });
 
-//-----------------tables----------------
-const tableRigs = API.getWaterOut().table;
 
 const style = styler([
     { key: "waterOut", color: "cadetblue", width: 2 },
@@ -81,9 +79,7 @@ export default class WaterOut extends Component {
     };
 
     render() {
-        const f = format("$,.2f");
         const range = this.state.timerange;
-        const table = {data: tableRigs, tableName: 'Water Out'};
 
         if (this.state.tracker) {
             const index = seriesWaterOut.bisect(this.state.tracker);

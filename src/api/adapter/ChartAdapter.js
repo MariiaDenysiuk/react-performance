@@ -1,70 +1,82 @@
 class ChartAdapter  {
+
     adaptedString(data) {
         return data.replace(/_/g," ");
     }
 
-    getData(tableData, chartData) {
-       const chart = chartData;
-       let crews = [];
-       let rigs = [];
-       let waterOut = [];
-       let production = [];
-       const arr = {table: {}, chart: {}};
+    // create model for chart adapter
+    getData(tableData) {
+       const table = this.buildTable(tableData);
+       const chart = this.buildChart(tableData);
+       return {table: table, chart: chart};
+    }
 
-        let header = [];
-        let body = tableData;
-        for(const currentItem in tableData[0]) {
-           header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'onUpdate'});
-        }
-       arr.table['header'] = header;
-       arr.table['body'] = body;
+    buildTable(table) {
+        const tableData = {header: [], body: table};
+        // if(additionData) {
+        //     for(const currentItem in table[0]) {
+        //         if(table[0].hasOwnProperty(currentItem)) {
+        //             tableData.header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'onUpdate'});
+        //         }
+        //     }
+        // } else {
+        //     for(const currentItem in table[0]) {
+        //         if(table[0].hasOwnProperty(currentItem)) {
+        //             tableData.header.push(currentItem);
+        //         }
+        //     }
 
-        chart.forEach(items => {
-          let curCrews = [];
-          let curRigs = [];
-          let totalProduction = [];
-          let totalWaterout = [];
+        for(const currentItem in table[0]) {
+                 if(table[0].hasOwnProperty(currentItem)) {
+                    tableData.header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'onUpdate'});
+                  }
+             }
 
-           for(let key in items) {
-               if(key === "frac_date") {
-                   const dat = Date.parse(new Date(items['frac_date']));
-                   curCrews.push(dat);
-                   curRigs.push(dat);
-               }
+        return tableData;
+    }
 
-               if(key === "date") {
-                   const dat = Date.parse(new Date(items['date']));
-                   totalProduction.push(dat);
+    buildChart(table) {
+        //todo make model, make more abstraction
+        let chart = {crews: [], rigs: [], production: [],  waterOut: []};
+        table.forEach(items => {
+            let curCrews = [];
+            let curRigs = [];
+            let production = [];
+            let waterOut = [];
+            for(let key in items) {
+                if(key === "frac_date") {
+                    const dat = Date.parse(new Date(items['frac_date']));
+                    curCrews.push(dat);
+                    curRigs.push(dat);
+                }
 
-                   totalWaterout.push(dat);
-               }
+                if(key === "date") {
+                    const dat = Date.parse(new Date(items['date']));
+                    production.push(dat);
+                    waterOut.push(dat);
+                }
 
-               if(key === "total_production_with_waterout") {
-                   totalProduction.push(items['total_production_with_waterout']);
-               }
-               if(key === "total_waterout") {
-                   totalWaterout.push(items['total_waterout']);
-               }
+                if(key === "total_production_with_waterout") {
+                    production.push(items['total_production_with_waterout']);
+                }
+                if(key === "total_waterout") {
+                    waterOut.push(items['total_waterout']);
+                }
 
-               if(key === "total_crews") {
-                   curCrews.push(items['total_crews']);
-               }
-               if(key === "total_rigs") {
-                   curRigs.push(items['total_rigs']);
-               }
-
-           }
-           crews.push(curCrews);
-           rigs.push(curRigs);
-           waterOut.push(totalWaterout);
-           production.push(totalProduction);
-
+                if(key === "total_crews") {
+                    curCrews.push(items['total_crews']);
+                }
+                if(key === "total_rigs") {
+                    curRigs.push(items['total_rigs']);
+                }
+            }
+            chart.crews.push(curCrews);
+            chart.rigs.push(curRigs);
+            chart.production.push(production);
+            chart.waterOut.push(waterOut);
         });
 
-
-        arr.chart = {rigs: rigs, crews: crews, waterOut: waterOut, production: production};
-
-       return arr;
+        return chart;
     }
 }
 

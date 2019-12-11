@@ -154,9 +154,7 @@ export default function Financial() {
                                     }
                                 }, 600);
                             }),
-
                     }}
-
                 />
 
                 <MaterialTable

@@ -2,18 +2,14 @@ import React, { Component } from 'react';
 import { TimeSeries } from "pondjs";
 import { Charts, ChartContainer, ChartRow, YAxis, LineChart, styler } from "react-timeseries-charts";
 import 'react-datasheet/lib/react-datasheet.css';
-import API from "../../api/API";
-import TableUI from "../Table";
-import Grid from '@material-ui/core/Grid';
 import _ from "underscore";
-import { format } from "d3-format";
 import Baseline from "../BaseLine";
-import Resizable from "./Resizable";
+import API from "../../api/API";
 
 
 //-------------------charts-----------------
 function buildPoints() {
-    const production = API.getProduction().chart.production;
+    const production = API.getProductionWaterOut().chart.production;
     let points = [];
     for (let i = 0; i < production.length; i++) {
         points.push([production[i][0], production[i][1]]);
@@ -27,8 +23,6 @@ const seriesProduction = new TimeSeries({
     points: buildPoints()
 });
 
-//-----------------tables----------------
-const tableRigs = API.getProduction().table;
 
 const style = styler([
     { key: "production", color: "cadetblue", width: 2 },
@@ -38,7 +32,6 @@ const style = styler([
 class CrossHairs extends React.Component {
     render() {
         const { x, y } = this.props;
-
         const style = { pointerEvents: "none", stroke: "#ccc" };
         if (!_.isNull(x) && !_.isNull(y)) {
             return (
@@ -53,10 +46,6 @@ class CrossHairs extends React.Component {
     }
 }
 
-const chartStyle = {
-    display: "flex",
-    alignItems: "center"
-};
 
 export default class Production extends Component {
 
@@ -84,20 +73,11 @@ export default class Production extends Component {
     };
 
     render() {
-        const f = format("$,.2f");
         const range = this.state.timerange;
-
-        if (this.state.tracker) {
-            const index = seriesProduction.bisect(this.state.tracker);
-            const trackerEvent = seriesProduction.at(index);
-        }
-
         return (
-
                         <div style={{ width: '100%', overflow: "hidden"}}>
                             <div style={{width: '100%'}}>
                                 <div style={{width: '100%'}}>
-
                                         <ChartContainer
                                             timeRange={range}
                                             timeAxisStyle={{
@@ -169,7 +149,6 @@ export default class Production extends Component {
                                                 </Charts>
                                             </ChartRow>
                                         </ChartContainer>
-
                                 </div>
                             </div>
                             <div className="row">

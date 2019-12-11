@@ -13,7 +13,6 @@ import {drilling_schedule} from "./testData/drilling_schedule";
 import FinancialAdapter from "./adapter/FinancialAdapter";
 
 class API {
-
     // wells data for first tab   ------- 1 tab -------------
     getWellsData() {
         // axios.get(`${options.root}/wells_list`)
@@ -57,34 +56,34 @@ class API {
             });
     }
 
-    // ----------------- completion tab -----------------------------------
-
+    // ----------------- completion tab, data for bnuilding tables and charts -----------------------------------
     getCrewsData() {
         // axios.post(`${options.root}/drilling/CrewsData?`)
         //     .then(res => {
         //         return ChartAdapter.getData(res);
         //     });
-        if(!options.root) return ChartAdapter.getData(rigsCrews_schedule, rigsCrews_schedule);
+        if(!options.root) return ChartAdapter.getData(rigsCrews_schedule);
     }
 
-    getWaterOut() {
-        // axios.post(`${options.root}/drilling/waterOut`)
-        //     .then(res => {
-        //         return ChartAdapter.getData(res);
-        //     });
-        if(!options.root) return ChartAdapter.getData(production_schedule, production_schedule);
-    }
+    // getWaterOut() {
+    //     // axios.post(`${options.root}/drilling/waterOut`)
+    //     //     .then(res => {
+    //     //         return ChartAdapter.getData(res);
+    //     //     });
+    //     if(!options.root) return ChartAdapter.getData(production_schedule, false);
+    // }
 
-    getProduction() {
+    // production data table
+    getProductionWaterOut() {
         // axios.post(`${options.root}/drilling/production`)
         //     .then(res => {
         //         return ChartAdapter.getData(res);
         //     });
-        console.log(ChartAdapter.getData(production_schedule, production_schedule));
-        if(!options.root) return ChartAdapter.getData(production_schedule, production_schedule);
+
+        if(!options.root) return ChartAdapter.getData(production_schedule);
     }
 
-    // for now
+    // ----------------- financial tab -----------------------------------
 
     getRevenue(data) {
         return ProductionPricingAdapter.getRevenue(data);
@@ -93,9 +92,6 @@ class API {
     getFiancial() {
         return FinancialAdapter.getData(financial);
     }
-
-
-
 }
 
 export default new API();

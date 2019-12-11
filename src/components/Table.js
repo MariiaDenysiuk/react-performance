@@ -27,6 +27,10 @@ export default function TableUI(prop) {
 
     return (
         <MaterialTable
+            options={{
+                search: false,
+                toolbar: false,
+            }}
             title={prop.tableData.tableName}
             style={tableStyle}
             columns={state.columns}

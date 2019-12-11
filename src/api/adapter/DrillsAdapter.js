@@ -3,9 +3,9 @@ class DrillsAdapter  {
         return data;
     }
 
-    createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
-    }
+    // createData(name, calories, fat, carbs, protein) {
+    //     return { name, calories, fat, carbs, protein };
+    // }
   // need mark from drilling datasets on , becouse for now datasets without marks
     getParsedDataSet(data) {
         const header = [];
@@ -32,7 +32,8 @@ class DrillsAdapter  {
         });
 
         body = [part1, part2, part3];
-
+        console.log(header);
+        console.log(body);
         return {header: header, body: body};
     }
 }
