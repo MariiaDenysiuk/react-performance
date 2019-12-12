@@ -40,7 +40,8 @@ export default class Completion extends Component {
                 <Grid item xs={8} spacing={3}>
                     <Grid container spacing={3}>
                         <Grid item xs={6} spacing={3}>
-                            <TableUI tableData={{data: tableWaterOutProduction, tableName: 'Production'}} />
+                            {/* <TableUI tableData={{data: tableWaterOutProduction, tableName: 'Production'}} /> */}
+                            <SimpleTable header = {tableWaterOutProduction.header} body = {tableWaterOutProduction.body} />
                         </Grid>
                         <Grid item xs={6} spacing={3} style={chartStyle} >
                             <Production />
@@ -49,7 +50,7 @@ export default class Completion extends Component {
 
                     <Grid container spacing={3}>
                         <Grid item xs={6} spacing={3}>
-                            <TableUI tableData={{data: tableWaterOutProduction, tableName: 'Water Out'}} />
+                            {/* <TableUI tableData={{data: tableWaterOutProduction, tableName: 'Water Out'}} /> */}
                         </Grid>
                         <Grid item xs={6} spacing={3} style={chartStyle} >
                             <WaterOut/>
@@ -58,7 +59,7 @@ export default class Completion extends Component {
 
                     <Grid container spacing={3}>
                         <Grid item xs={6} spacing={3}>
-                            <TableUI tableData={{data: tableRigs, tableName: 'Rigs and Crews'}} />
+                            {/* <TableUI tableData={{data: tableRigs, tableName: 'Rigs and Crews'}} /> */}
                         </Grid>
                         <Grid item xs={6} spacing={3} style={chartStyle} >
                             <RigsCrews/>

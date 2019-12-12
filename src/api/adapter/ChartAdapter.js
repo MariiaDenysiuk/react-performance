@@ -20,18 +20,18 @@ class ChartAdapter  {
         //         }
         //     }
         // } else {
-        //     for(const currentItem in table[0]) {
-        //         if(table[0].hasOwnProperty(currentItem)) {
-        //             tableData.header.push(currentItem);
-        //         }
-        //     }
+            for(const currentItem in table[0]) {
+                if(table[0].hasOwnProperty(currentItem)) {
+                    tableData.header.push(currentItem);
+                }
+            }
 
-        for(const currentItem in table[0]) {
-                 if(table[0].hasOwnProperty(currentItem)) {
-                    tableData.header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'onUpdate'});
-                  }
-             }
-
+        // for(const currentItem in table[0]) {
+        //          if(table[0].hasOwnProperty(currentItem)) {
+        //             tableData.header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'onUpdate'});
+        //           }
+        //      }
+        console.log(tableData);
         return tableData;
     }
 

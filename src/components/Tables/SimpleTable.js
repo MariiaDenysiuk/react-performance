@@ -5,7 +5,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
+import Paper from '@material-ui/core/Paper';
 
 export default class SimpleTable extends Component {
 
@@ -15,34 +15,46 @@ export default class SimpleTable extends Component {
 
     state = {
        header: this.props.header,
-       body: this.props.body
+       body: this.showData()
     };
+
+    showData() {
+        let rows = [];
+        for (let i = 0; i < 200; i += 1) {
+            const randomSelection = this.props.body[Math.floor(Math.random() * this.props.body.length)];
+            rows.push(i, randomSelection);
+        } 
+        return rows;
+    }
 
     render() {
         return (
-         <Table aria-label="caption table" size="small">
-            <TableHead>
-                <TableRow>
-                {this.state.header.map(row => (
-                <TableCell >{row}</TableCell>
-                ))}
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {this.state.body.map((row, i) => (
-                <TableRow key={row[this.state.header[0]]}>
-
-                    {this.state.header.map((header, i) => (
-                    <TableCell component="th" scope="row">
-                        {row[header]}
-                    </TableCell>
+         <Paper style={{ height: 400, width: '100%' }}>
+            <Table aria-label="caption table" size="small" rowCount = {this.state.body.length} 
+            rowGetter={({ index }) => this.state.body[index]} >
+                <TableHead>
+                    <TableRow>
+                    {this.state.header.map(row => (
+                    <TableCell >{row}</TableCell>
                     ))}
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {this.state.body.map((row, i) => (
+                    <TableRow key={row[this.state.header[0]]}>
 
-                </TableRow>
+                        {this.state.header.map((header, i) => (
+                        <TableCell component="th" scope="row">
+                            {row[header]}
+                        </TableCell>
+                        ))}
 
-                ))}
-            </TableBody>
-        </Table>
+                    </TableRow>
+
+                    ))}
+                </TableBody>
+            </Table>
+        </Paper>
         );
     }
 }
