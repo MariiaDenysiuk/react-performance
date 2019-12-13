@@ -57,7 +57,7 @@ class API {
     }
 
     // ----------------- completion tab, data for bnuilding tables and charts -----------------------------------
-    getCrewsData() {
+    getCrewsData() {// }
         // axios.post(`${options.root}/drilling/CrewsData?`)
         //     .then(res => {
         //         return ChartAdapter.getData(res);
@@ -71,7 +71,7 @@ class API {
     //     //         return ChartAdapter.getData(res);
     //     //     });
     //     if(!options.root) return ChartAdapter.getData(production_schedule, false);
-    // }
+
 
     // production data table
     getProductionWaterOut() {

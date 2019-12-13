@@ -1,0 +1,13 @@
+.ReactVirtualized__Table__row {
+    width: auto !important;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer,
+/*.ReactVirtualized__Grid,*/
+.ReactVirtualized__Table__headerRow {
+    overflow: unset !important;
+}
+
+.ReactVirtualized__Grid {
+    width: 1850px !important;
+}

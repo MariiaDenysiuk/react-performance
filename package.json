@@ -26,7 +26,8 @@
     "react-scripts": "^3.2.0",
     "react-spreadsheet-grid": "^1.4.3",
     "react-tabs": "^3.0.0",
-    "react-timeseries-charts": "^0.16.1"
+    "react-timeseries-charts": "^0.16.1",
+    "react-virtualized": "^9.21.2"
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=9096 start",

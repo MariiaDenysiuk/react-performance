@@ -13,25 +13,13 @@ class ChartAdapter  {
 
     buildTable(table) {
         const tableData = {header: [], body: table};
-        // if(additionData) {
-        //     for(const currentItem in table[0]) {
-        //         if(table[0].hasOwnProperty(currentItem)) {
-        //             tableData.header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'onUpdate'});
-        //         }
-        //     }
-        // } else {
-            for(const currentItem in table[0]) {
-                if(table[0].hasOwnProperty(currentItem)) {
-                    tableData.header.push(currentItem);
-                }
-            }
 
-        // for(const currentItem in table[0]) {
-        //          if(table[0].hasOwnProperty(currentItem)) {
-        //             tableData.header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'onUpdate'});
-        //           }
-        //      }
-        console.log(tableData);
+        for(const currentItem in table[0]) {
+                 if(table[0].hasOwnProperty(currentItem)) {
+                    tableData.header.push({label: this.adaptedString(currentItem), dataKey: currentItem});
+                  }
+             }
+
         return tableData;
     }
 

@@ -3,9 +3,10 @@ class DrillsAdapter  {
         return data;
     }
 
-    // createData(name, calories, fat, carbs, protein) {
-    //     return { name, calories, fat, carbs, protein };
-    // }
+    adaptedString(data) {
+        return data.replace(/_/g," ");
+    }
+
   // need mark from drilling datasets on , becouse for now datasets without marks
     getParsedDataSet(data) {
         const header = [];
@@ -15,9 +16,16 @@ class DrillsAdapter  {
         const part2= [];
         const part3 = [];
 
+        // for(const currentItem in data[0]) {
+        //     header.push(currentItem);
+        // }
+        //
+
+
         for(const currentItem in data[0]) {
-            header.push(currentItem);
+            header.push({label: this.adaptedString(currentItem), dataKey: currentItem});
         }
+
 
         data.map((el, i) => {
             if(i < 81) {
