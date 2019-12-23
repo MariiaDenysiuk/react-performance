@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import '../styles/Drilling.css';
-import run from './run.js';
-import API from "../api/API";
+import '../../styles/Drilling.css';
+import run from './../../components/run.js';
+import API from "../../api/API";
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
@@ -30,7 +30,6 @@ export default class Drilling extends Component {
             return;
         }
 
-        //SPREAD IT!!
         let rigsCopy = [...this.state.rigs];
 
         if (source.droppableId === destination.droppableId) {

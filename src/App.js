@@ -6,11 +6,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import MaterialTableDemo from "../components/Wells";
-import Drilling from "../components/Drilling";
-import Completion from "./Completion";
+import MaterialTableDemo from "./pages/Wells/Wells";
+import Drilling from "./pages/Drillings/Drilling";
+import Completion from "./pages/Completion/Completion";
 import { grey } from '@material-ui/core/colors';
-import Financial from "./Financial";
+import Financial from "./pages/Financial/Financial";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;

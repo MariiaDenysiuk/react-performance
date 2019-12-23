@@ -1,90 +1,78 @@
-import axios from 'axios';
 import WellAdapter from "./adapter/WellAdapter";
 import DrillsAdapter from "./adapter/DrillsAdapter";
 import ChartAdapter from "./adapter/ChartAdapter";
+import ProductionPricingAdapter from "./adapter/ProductionPricingAdapter";
+import FinancialAdapter from "./adapter/FinancialAdapter";
+import httpMethods from "./http-methods";
+import { drilling_schedule } from "./testData/drilling_schedule";
 import { drills } from "./testData/drills";
 import { options } from "./endpoints";
 import { wells } from "../api/testData/wells";
 import { financial } from "../api/testData/financial";
 import { rigsCrews_schedule } from "./testData/rigsCrewsDataTable";
 import { production_schedule } from "./testData/productionDataTable";
-import ProductionPricingAdapter from "./adapter/ProductionPricingAdapter";
-import {drilling_schedule} from "./testData/drilling_schedule";
-import FinancialAdapter from "./adapter/FinancialAdapter";
+import api from "./endpoints";
 
 class API {
-    // wells data for first tab   ------- 1 tab -------------
+    /**
+     * Wells data.
+     */
     getWellsData() {
-        // axios.get(`${options.root}/wells_list`)
-        //     .then(res => {
-        //       return WellAdapter.getData(res);
-        //     }).catch(error => {
-        //
-        // });
+        const data = httpMethods.get(api.wells.get_wells_list());
+        data.then( res => {
+            return WellAdapter.getData(res);
+        }).catch(error => {});
         if(!options.root) return WellAdapter.getData(wells);
     }
 
     updateWells() {
-        // axios.post(`${options.root}/wells_update`)
-        //     .then(res => {
-        //         console.log(res);
-        //     });
+        httpMethods.post(api.wells.update_wells()).then(
+            res => {
+                console.log(res);
+            }
+        );
     }
 
-    // drills data for second   ------- 2 tab ----------------
+    /**
+     * Drills data.
+     */
     getDrillData() {
-        // axios.get(`${options.root}/drilling_default`)
-        //     .then(res => {
-        //         return DrillsAdapter.getData(res);
-        //     });
+        httpMethods.get(api.drillings.get_drillings_list()).then( res => {
+            return DrillsAdapter.getData(res);
+        }).catch(error => {});
         if(!options.root) return DrillsAdapter.getData(drills);
     }
 
     getDrillDataTable() {
-        // axios.get(`${options.root}/drilling_default`)
-        //     .then(res => {
-        //         return DrillsAdapter.getData(res);
-        //     });
-        console.log(DrillsAdapter.getParsedDataSet(drilling_schedule))
         if(!options.root) return DrillsAdapter.getParsedDataSet(drilling_schedule);
     }
 
-    postDrillData(runDrillData) {
-        return axios.post(`${options.root}/drilling/calculate_drilling_schedule`, {runDrillData})
-            .then(res => {
-               console.log(res)
-            });
-    }
+    postDrillData(runDrillData) {}
 
-    // ----------------- completion tab, data for bnuilding tables and charts -----------------------------------
-    getCrewsData() {// }
-        // axios.post(`${options.root}/drilling/CrewsData?`)
-        //     .then(res => {
-        //         return ChartAdapter.getData(res);
-        //     });
+    /**
+     * Completion data.
+     */
+    getCrewsData() {
+        httpMethods.post(api.completion.get_calculate_drilling_schedule).then(
+            res => {
+                return ChartAdapter.getData(res);
+            }
+        );
         if(!options.root) return ChartAdapter.getData(rigsCrews_schedule);
     }
 
-    // getWaterOut() {
-    //     // axios.post(`${options.root}/drilling/waterOut`)
-    //     //     .then(res => {
-    //     //         return ChartAdapter.getData(res);
-    //     //     });
-    //     if(!options.root) return ChartAdapter.getData(production_schedule, false);
-
-
-    // production data table
     getProductionWaterOut() {
-        // axios.post(`${options.root}/drilling/production`)
-        //     .then(res => {
-        //         return ChartAdapter.getData(res);
-        //     });
+        httpMethods.post(api.completion.get_calculate_production_waterout())
+            .then(res => {
+                return ChartAdapter.getData(res);
+            });
 
         if(!options.root) return ChartAdapter.getData(production_schedule);
     }
 
-    // ----------------- financial tab -----------------------------------
-
+    /**
+     * Financial data.
+    */
     getRevenue(data) {
         return ProductionPricingAdapter.getRevenue(data);
     }

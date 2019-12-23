@@ -1,19 +1,16 @@
-class WellAdapter  {
-   adaptedString(data) {
-       return data.replace(/_/g," ");
-   }
+import StringAdapter from "./StringAdapter";
 
+class WellAdapter  {
+   notChangeData = ['wid', 'spud_date', 'frac_date', 'dofp', 'diod'];
    getData(data) {
        let header = [];
        let body = data;
        for(const currentItem in data[0]) {
-           if(currentItem !== 'wid' && currentItem !== 'spud_date' && currentItem !== 'frac_date' && currentItem !== 'dofp' && currentItem !== 'diod') {
-               header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'onUpdate'});
-           } else {
-               header.push({title: this.adaptedString(currentItem), field: currentItem, editable: 'never'});
+           if(data[0].hasOwnProperty(currentItem)) {
+               header.push({title:  StringAdapter.replaceSymbol(currentItem), field: currentItem, editable: this.notChangeData.includes(currentItem) ? 'onUpdate' : 'edit'});
            }
        }
-       return {header: header, body: body};
+       return { header: header, body: body };
    }
 }
 

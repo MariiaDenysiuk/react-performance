@@ -37,7 +37,6 @@ const style = styler([
 class CrossHairs extends React.Component {
     render() {
         const { x, y } = this.props;
-
         const style = { pointerEvents: "none", stroke: "#ccc" };
         if (!_.isNull(x) && !_.isNull(y)) {
             return (
@@ -47,7 +46,7 @@ class CrossHairs extends React.Component {
                 </g>
             );
         } else {
-            return <g />;
+            return <g/>;
         }
     }
 }

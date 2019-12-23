@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'react-datasheet/lib/react-datasheet.css';
 import PropTypes from 'prop-types';
 import TableCell from '@material-ui/core/TableCell';
 import Paper from '@material-ui/core/Paper';
 import clsx from 'clsx';
 import { AutoSizer, Column, Table } from 'react-virtualized';
-import { withStyles } from '@material-ui/core/styles';
 import './SimpleTable.css';
+import { withStyles } from "@material-ui/core";
 
 const styles = theme => ({
     flexContainer: {
@@ -36,7 +36,6 @@ const styles = theme => ({
         cursor: 'initial',
     },
 });
-
 
 class SimpleTable extends React.PureComponent {
     static defaultProps = {
@@ -130,8 +129,7 @@ class SimpleTable extends React.PureComponent {
     }
 }
 
-
-    SimpleTable.propTypes = {
+SimpleTable.propTypes = {
         classes: PropTypes.object.isRequired,
         columns: PropTypes.arrayOf(
             PropTypes.shape({
@@ -144,16 +142,8 @@ class SimpleTable extends React.PureComponent {
         headerHeight: PropTypes.number,
         onRowClick: PropTypes.func,
         rowHeight: PropTypes.number,
-    };
-
-    const VirtualizedTable = withStyles(styles)(SimpleTable);
-
-
-    function createData(serial, date, horizonal_production, vertical_production, total_production, horizontal_waterout, vertical_waterout, total_waterout, total_production_with_waterout) {
-        return { serial, date, horizonal_production, vertical_production, total_production, horizontal_waterout, vertical_waterout, total_waterout, total_production_with_waterout };
-    }
-
-
+};
+const VirtualizedTable = withStyles(styles)(SimpleTable);
 export default function ReactVirtualizedTable(props) {
     const state = {
         header: props.header,

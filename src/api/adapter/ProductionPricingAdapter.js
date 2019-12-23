@@ -6,13 +6,13 @@ class ProductionPricingAdapter  {
         let totalRevenue = [];
     
         // got date
-       
         data.columns.forEach((e, i) => {
             if(e.title.length > 0 && i !== 0) {
                 const date = Date.parse(new Date(e.title));
                 dateItems.push(date);
             }
         });
+
         // got oil revenue
         data.data2.forEach(e => {
             const test1 = [];
@@ -32,7 +32,6 @@ class ProductionPricingAdapter  {
                 totalRevenue = this.passData(Object.values(e), dateItems);
             }
         });
-        console.log({oilRevenue: oilRevenue, totalRevenue: totalRevenue})
         return  {oilRevenue: oilRevenue, totalRevenue: totalRevenue}
     }
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import MaterialTable, { MTableCell } from 'material-table';
+import MaterialTable from 'material-table';
 import Grid from '@material-ui/core/Grid';
-import Production from "./Charts/Production";
-import WaterOut from "./Charts/WaterOut";
-import RigsCrews from "./Charts/RigsCrews";
-import TotalRevenues from "./Charts/TotalRevenue";
-import API from '../api/API';
+import Production from "../../components/Charts/Production";
+import WaterOut from "../../components/Charts/WaterOut";
+import RigsCrews from "../../components/Charts/RigsCrews";
+import TotalRevenues from "../../components/Charts/TotalRevenue";
+import API from '../../api/API';
 import { TimeSeries } from 'pondjs';
 
 const financialData = API.getFiancial();

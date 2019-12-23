@@ -1,5 +1,5 @@
 class ChartAdapter  {
-
+    chartsPoints = ['frac_date', 'date', 'total_production_with_waterout', 'total_waterout', 'total_crews', 'total_rigs'];
     adaptedString(data) {
         return data.replace(/_/g," ");
     }
@@ -12,19 +12,16 @@ class ChartAdapter  {
     }
 
     buildTable(table) {
-        const tableData = {header: [], body: table};
-
-        for(const currentItem in table[0]) {
-                 if(table[0].hasOwnProperty(currentItem)) {
-                    tableData.header.push({label: this.adaptedString(currentItem), dataKey: currentItem});
-                  }
+      const tableData = {header: [], body: table};
+      for(const currentItem in table[0]) {
+             if(table[0].hasOwnProperty(currentItem)) {
+               tableData.header.push({label: this.adaptedString(currentItem), dataKey: currentItem});
              }
-
-        return tableData;
+           }
+      return tableData;
     }
 
     buildChart(table) {
-        //todo make model, make more abstraction
         let chart = {crews: [], rigs: [], production: [],  waterOut: []};
         table.forEach(items => {
             let curCrews = [];

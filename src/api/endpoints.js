@@ -19,6 +19,9 @@ const drillings = {
     get_drillings_list() {
         return 'drilling_default';
     },
+    get_drillings_production() {
+        return 'drilling_production';
+    },
 };
 
 /**
@@ -31,15 +34,25 @@ const completion = {
     get_calculate_production_waterout() {
         return 'calculate_production_waterout';
     },
-    get_calculate_financial() {
-        return 'calculate_financial';
+};
+
+/**
+ * Object responsible for completion endpoints.
+ */
+const financial = {
+    get_financial() {
+        return 'financial';
     },
+    get_revenue() {
+        return 'revenue';
+    }
 };
 
 const api = {
     wells,
     drillings,
-    completion
+    completion,
+    financial
 };
 
 export const options = {
